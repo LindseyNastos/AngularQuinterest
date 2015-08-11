@@ -1,0 +1,22 @@
+﻿<h1>{{main.board.boardName}} Board</h1>
+<p class="localLink">
+    {{main.board.numPins}} Pins
+    <br />
+    {{main.board.description}}
+</p>
+<p>
+    <button ng-click="main.showCreateModal()">Create Board</button>
+    <button ng-click="main.showEditModal()">Edit Board</button>
+    <button ng-click="main.showRemoveModal()">Delete Board</button>
+    <a class="localLink" href="/profile">Back to Profile</a>
+</p>
+<div ng-repeat="pin in main.pins" class="col-sm-3 smallPinDiv">
+    <a class="noDecoHover" href="pinDetails/{{pin.id}}">
+        <h4>{{pin.title}}</h4>
+        <br />
+        <img class="smallPinImage" ng-src="{{pin.imageUrl}}" />
+        <br />
+        {{pin.shortDescription}}
+        <br />
+    </a>
+</div>

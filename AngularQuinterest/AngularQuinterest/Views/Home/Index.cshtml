@@ -1,0 +1,36 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml" ng-app="QuinterestApp">
+<head>
+    <title></title>
+    <base href="/" />
+   
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+        input.ng-dirty.ng-invalid {
+            background-color: firebrick;
+        }
+        .error {
+            font-weight: bold;
+            color: firebrick;
+        }
+    </style>
+
+</head>
+<body>
+
+    <ng-view></ng-view>
+
+
+
+
+
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script>
+    <script src="~/Scripts/angular-resource.min.js"></script>
+    <script src="~/QuinterestApp/app.js"></script>
+    <script src="~/QuinterestApp/controllers.js"></script>
+    <script src="~/QuinterestApp/services.js"></script>
+</body>
+</html>

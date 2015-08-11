@@ -1,0 +1,41 @@
+﻿<h1>All Pins</h1>
+<p>
+    <a class="localLink" ng-click="main.showCreateModal()">Create Pin</a>
+    |
+    <a class="localLink" href="/profile">Profile</a>
+</p>
+<hr />
+
+<!--<div ng-cloak>
+    <div ng-repeat="pin in main.pins" class="col-sm-3 smallPinDiv">
+        <div>
+            <h4>{{pin.title}}</h4>
+            <img class="smallPinImage" ng-src="{{pin.imageUrl}}" />
+            <br />
+            <p>{{pin.shortDescription}}</p>
+            <a href="/pinDetails/{{pin.id}}">Details</a>
+            <button ng-click="main.pinItModal(pin.id)">Pin It</button>
+        </div>
+    </div>
+</div>-->
+
+
+<div class="section" id="pins">
+    <div class="row">
+        <div class="col-md-4" ng-repeat="pin in main.pins">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {{pin.title}}
+                </div>
+                <div class="panel-body">
+                    <img class="img-responsive" ng-src="{{pin.imageUrl}}" />
+                    <p>{{pin.shortDescription}}</p>
+                    <a href="/pinDetails/{{pin.id}}">Details</a>
+                    <button ng-click="main.pinItModal(pin.id)">Pin It</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

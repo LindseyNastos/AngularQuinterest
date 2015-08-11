@@ -1,0 +1,36 @@
+﻿<div class="modal-body row">
+
+    <div class="modalLeftSide col-sm-6">
+            <img class="mediumPinImage" ng-src="{{modal.pin.imageUrl}}" />
+            <p><strong>{{modal.pin.title}}</strong></p>
+            <p>{{modal.pin.website}}</p>
+            <hr />
+            {{modal.pin.shortDescription}}
+    </div>
+
+
+    <div>
+
+        <div class="col-sm-6">
+            <h3>
+                Pick a board
+                <button class="btn btn-sm btn-warning modalExit" ng-click="modal.cancel()">x</button>
+            </h3>
+            <hr />
+            <ul class="modalList">
+                <li class="modalBoardList" ng-repeat="board in modal.boards">
+                    <img class="boardListImage" ng-src="{{board.imageUrl}}" />
+                    <strong>{{board.boardName}}</strong>
+                    <button class="btn btn-sm btn-success pinItButtons" ng-click="modal.pinIt()">Pin it</button>
+                </li>
+                <li class="modalBoardList">
+                    <div class="createBoard boardListImage"></div>
+                    <strong>Create New</strong>
+                    <!--<button class="btn btn-sm btn-warning pinItButtons" ng-click="modal.createBoard()">Create</button>-->
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+

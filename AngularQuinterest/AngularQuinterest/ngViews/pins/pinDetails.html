@@ -1,0 +1,32 @@
+﻿<div>
+
+    <div class="row">
+        <div class="col-sm-7">
+
+            <img class="expandedPinImage" ng-src="{{main.pin.imageUrl}}" />
+
+        </div>
+        <div class="col-sm-5">
+
+            <hr style="border-color:white" />
+            <h2>{{main.pin.title}}</h2>
+
+            <hr style="border-color:white" />
+            <a href="{{main.pin.website}}">{{main.pin.website}}</a>
+            <br />
+            <hr style="border-color:white" />
+
+            <em>{{main.pin.shortDescription}}</em>
+            <br />
+            <hr style="border-color:white" />
+            {{main.pin.longDescription}}
+            <hr />
+            <strong><text>Pinned by </text>UserName Goes Here</strong>
+            <hr />
+            <button ng-click="main.showPinItModal(main.pin.id)">Pin it</button>
+            <button ng-click="main.showEditModal(main.pin.id)">Edit</button>
+            <button ng-click="main.showRemoveModal(main.pin.id)">Delete</button>
+        </div>
+    </div>
+
+</div>
