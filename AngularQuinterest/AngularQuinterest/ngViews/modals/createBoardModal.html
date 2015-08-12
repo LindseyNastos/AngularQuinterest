@@ -1,40 +1,36 @@
-﻿<div class="modal-header">
-    Create A Board
-</div>
-
-<div class="modal-body">
+﻿<div class="modal-body">
     <div class="row">
         <div class="col-sm-8 crudForms">
             <form ng-cloak name="createBoard" ng-submit="modal.save()" novalidate>
 
                 <label>Board Name</label>
-                <input name="boardName" ng-model="modal.boardName" required />
+                <input name="boardName" ng-model="modal.board.boardName" required />
                 <span ng-show="createBoard.title.$dirty&&createBoard.title.$error.required" class="error">
                     *required
                 </span>
                 <br />
 
                 <label>Image Url</label>
-                <input name="image" ng-model="modal.imageUrl" required />
+                <input name="image" ng-model="modal.board.imageUrl" required />
                 <span ng-show="createBoard.image.$dirty&&createBoard.image.$error.required" class="error">
                     *required
                 </span>
                 <br />
 
                 <label>Description</label>
-                <input ng-model="modal.description" />
+                <input ng-model="modal.board.description" />
                 <br />
 
-                <input type="submit" value="Create" ng-disabled="createBoard.$invalid" />
+                <input type="submit" value="Save" ng-disabled="createBoard.$invalid" />
 
             </form>
         </div>
 
         <div class="col-sm-3 smallPinDiv">
-            <h4>{{modal.boardName}}</h4>
-            <img class="smallPinImage" ng-src="{{modal.imageUrl}}" />
+            <h4>{{modal.board.boardName}}</h4>
+            <img class="smallPinImage" ng-src="{{modal.board.imageUrl}}" />
             <br />
-            {{modal.description}}
+            {{modal.board.description}}
         </div>
 
         <div class="col-sm-1">

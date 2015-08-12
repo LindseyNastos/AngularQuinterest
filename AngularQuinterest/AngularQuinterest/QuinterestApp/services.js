@@ -37,6 +37,8 @@
 
         var Board = $resource('/api/boards/:id');
 
+        var Pins = $resource('/api/user/:id')
+
         var _boardList = function () {
             return Board.query();
         };
@@ -53,13 +55,16 @@
             return Board.remove({ id: id });
         };
 
-
+        var _getPins = function (id) {
+            return Pins.query({ id: id });
+        };
 
         return {
             boardList: _boardList,
             save: _save,
             get: _get,
-            remove: _remove
+            remove: _remove,
+            getPins: _getPins
         };
 
     });

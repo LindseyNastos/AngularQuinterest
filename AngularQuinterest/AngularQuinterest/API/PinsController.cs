@@ -1,6 +1,7 @@
 ﻿using AngularQuinterest.Models;
 using AngularQuinterest.Services;
 using System;
+using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -31,10 +32,17 @@ namespace AngularQuinterest.API
             return _service.FindPin(id);
         }
 
+        [HttpPost]
+        public Boolean SaveOrder(int[] order)
+        {
+            return true;
+        }
+
+
         // POST: api/Pins
         public HttpResponseMessage Post(Pin pin)
         {
-           //var userId = ?!?!?
+            var userId = this.User.Identity.GetUserId();
 
             if (ModelState.IsValid)
             {

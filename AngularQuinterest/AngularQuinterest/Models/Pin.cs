@@ -11,6 +11,7 @@ namespace AngularQuinterest.Models
 
 
         //[Required(ErrorMessage = "*required")]
+
         public string Title { get; set; }
 
 

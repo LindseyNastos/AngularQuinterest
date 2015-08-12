@@ -8,24 +8,24 @@
         </div>
         <div class="col-sm-5">
 
-            <hr style="border-color:white" />
+            <hr style="border-color:transparent" />
             <h2>{{main.pin.title}}</h2>
 
-            <hr style="border-color:white" />
+            <hr style="border-color:transparent" />
             <a href="{{main.pin.website}}">{{main.pin.website}}</a>
             <br />
-            <hr style="border-color:white" />
+            <hr style="border-color:transparent" />
 
             <em>{{main.pin.shortDescription}}</em>
             <br />
-            <hr style="border-color:white" />
+            <hr style="border-color:transparent" />
             {{main.pin.longDescription}}
-            <hr />
+            <hr style="border-color:transparent"/>
             <strong><text>Pinned by </text>UserName Goes Here</strong>
-            <hr />
-            <button ng-click="main.showPinItModal(main.pin.id)">Pin it</button>
-            <button ng-click="main.showEditModal(main.pin.id)">Edit</button>
-            <button ng-click="main.showRemoveModal(main.pin.id)">Delete</button>
+            <hr style="border-color:white"/>
+            <button class="btn-danger" ng-click="main.showPinItModal(main.pin.id)"><i class="fa fa-thumb-tack"></i> Pin it</button>
+            <button ng-click="main.showEditModal(main.pin.id)"><i class="fa fa-pencil"></i> Edit</button>
+            <button ng-click="main.showRemoveModal(main.pin.id)"><i class="fa fa-trash-o"></i> Delete</button>
         </div>
     </div>
 

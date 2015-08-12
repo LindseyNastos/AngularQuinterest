@@ -1,9 +1,9 @@
 ﻿<div class="modal-body row">
 
-    <div class="modalLeftSide col-sm-6">
+    <div class="col-sm-6">
             <img class="mediumPinImage" ng-src="{{modal.pin.imageUrl}}" />
             <p><strong>{{modal.pin.title}}</strong></p>
-            <p>{{modal.pin.website}}</p>
+            <p><em>{{modal.pin.website}}</em></p>
             <hr />
             {{modal.pin.shortDescription}}
     </div>
@@ -23,10 +23,8 @@
                     <strong>{{board.boardName}}</strong>
                     <button class="btn btn-sm btn-success pinItButtons" ng-click="modal.pinIt()">Pin it</button>
                 </li>
-                <li class="modalBoardList">
-                    <div class="createBoard boardListImage"></div>
-                    <strong>Create New</strong>
-                    <!--<button class="btn btn-sm btn-warning pinItButtons" ng-click="modal.createBoard()">Create</button>-->
+                <li>
+                    <button class="btn btn-sm btn-warning pinItButtons" ng-click="modal.showCreateBoardModal()">Create New Board</button>
                 </li>
             </ul>
         </div>

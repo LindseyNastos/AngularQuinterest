@@ -36,14 +36,29 @@ namespace AngularQuinterest.Services
         //}
 
 
+
+        public int UpdatePinCount(int boardId)
+        {
+            var count = _repo.Query<Pin>()
+                .Where(p => p.BoardId == boardId)
+                .Count();
+            var board = _repo.Find<Board>(boardId);
+            board.NumPinsOnBoard = count;
+            _repo.SaveChanges();
+            return count;
+        }
+
+
         public void Create(Pin pin)
         {
             _repo.Add<Pin>(pin);
             _repo.SaveChanges();
+            var boardId = pin.BoardId;
+            //this.UpdatePinCount(boardId);
         }
 
 
-        public void PinIt(Pin pin, string userId)
+        public void PinIt(Pin pin, string userId, int boardId)
         {
             var newPin = new Pin
             {
@@ -63,12 +78,16 @@ namespace AngularQuinterest.Services
             _repo.Add<Pin>(pin);
 
             _repo.SaveChanges();
+
+            //this.UpdatePinCount(boardId);
+
         }
 
 
         public void Edit(int id, Pin pin)
         {
             var original = this.FindPin(id);
+            var originalBoardId = original.BoardId;
             original.Board = pin.Board;
             original.BoardId = pin.BoardId;
             original.ImageUrl = pin.ImageUrl;
@@ -80,12 +99,22 @@ namespace AngularQuinterest.Services
             original.Website = pin.Website;
 
             _repo.SaveChanges();
+
+            //if (originalBoardId != pin.BoardId)
+            //{
+            //    this.UpdatePinCount(originalBoardId);
+            //    this.UpdatePinCount(pin.BoardId);
+            //}
         }
 
         public void Delete(int id)
         {
+            var board = this.FindPin(id).Board;
+
             _repo.Delete<Pin>(id);
             _repo.SaveChanges();
+
+            //this.UpdatePinCount(board.Id);
         }
 
     }

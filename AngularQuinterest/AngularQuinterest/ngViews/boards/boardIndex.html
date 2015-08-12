@@ -1,18 +1,32 @@
 ﻿<h1>Profile</h1>
 
-<button ng-click="main.showCreateBoardModal()">Create Board</button>
- | 
-<button ng-click="main.showCreatePinModal()">Create Pin</button>
+<button ng-click="main.showCreateBoardModal()"><i class="fa fa-plus"></i> Create Board</button>
+ 
+<button ng-click="main.showCreatePinModal()"><i class="fa fa-plus"></i> Create Pin</button>
 <br />
 <h4>Your Boards</h4>
 <hr />
 
 
-<div ng-repeat="board in main.boards" class="col-sm-3 smallPinDiv">
-    <a class="noDecoHover" href="boardDetails/{{board.id}}">
-        <h4>{{board.boardName}}</h4>
-        <img class="smallPinImage" ng-src="{{board.imageUrl}}" />
-        <br />
-        <p>{{board.description}}</p>
-    </a>
+<div class="section pins">
+    <div class="row">
+        <div class="col-sm-3" ng-repeat="board in main.boards">
+            <a class="noDecoHover" href="/boardDetails/{{board.id}}">
+                <div class="panel boards panel-default">
+                    <div class="panel-heading">
+                        {{board.boardName}}
+                    </div>
+                    <div class="panel-body">
+                        <img class="img-responsive" ng-src="{{board.imageUrl}}" />
+                        <br />
+                        <img class="tinyPinDiv img-responsive" ng-src="{{board.imageUrl}}" />
+                        <img class="tinyPinDiv img-responsive" ng-src="{{board.imageUrl}}" />
+                        <img class="tinyPinDiv img-responsive" ng-src="{{board.imageUrl}}" />
+                        <hr />
+                        <p>{{board.description}}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
 </div>

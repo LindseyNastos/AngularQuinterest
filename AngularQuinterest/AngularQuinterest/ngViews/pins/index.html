@@ -1,37 +1,32 @@
 ﻿<h1>All Pins</h1>
 <p>
-    <a class="localLink" ng-click="main.showCreateModal()">Create Pin</a>
-    |
-    <a class="localLink" href="/profile">Profile</a>
+    <span style="float:right; position:relative; top:-50px;">
+        <label><i class="fa fa-search"></i> Search:</label>
+        <input class="form-control" type="text" ng-model="searchText" />
+    </span>
+
+    <button ng-click="main.showCreateModal()"><i class="fa fa-plus"></i> Create Pin</button>
+
+    <button ng-click="main.profile()"><i class="fa fa-user"></i> Profile</button>
+
+    
 </p>
 <hr />
 
-<!--<div ng-cloak>
-    <div ng-repeat="pin in main.pins" class="col-sm-3 smallPinDiv">
-        <div>
-            <h4>{{pin.title}}</h4>
-            <img class="smallPinImage" ng-src="{{pin.imageUrl}}" />
-            <br />
-            <p>{{pin.shortDescription}}</p>
-            <a href="/pinDetails/{{pin.id}}">Details</a>
-            <button ng-click="main.pinItModal(pin.id)">Pin It</button>
-        </div>
-    </div>
-</div>-->
 
 
-<div class="section" id="pins">
+<div class="section">
     <div class="row">
-        <div class="col-md-4" ng-repeat="pin in main.pins">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    {{pin.title}}
-                </div>
+        <div class="col-md-3" ng-repeat="pin in main.pins | filter:searchText">
+            <div class="panel pins panel-default">
+                
                 <div class="panel-body">
-                    <img class="img-responsive" ng-src="{{pin.imageUrl}}" />
+                    <h4>{{pin.title}}</h4>
+                    <img class="smallPinImage img-responsive" ng-src="{{pin.imageUrl}}" />
+                    <hr />
                     <p>{{pin.shortDescription}}</p>
-                    <a href="/pinDetails/{{pin.id}}">Details</a>
-                    <button ng-click="main.pinItModal(pin.id)">Pin It</button>
+                    <button class="btn-danger" ng-click="main.showPinItModal(pin.id)"><i class="fa fa-thumb-tack"></i> Pin It</button>
+                    <button ng-click="main.details(pin.id)"><i class="fa fa-search-plus"></i> Details</button>
                 </div>
             </div>
         </div>

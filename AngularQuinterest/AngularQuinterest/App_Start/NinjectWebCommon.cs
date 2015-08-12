@@ -68,6 +68,8 @@ namespace AngularQuinterest.App_Start
             kernel.Bind<IPinServices>().To<PinServices>();
 
             kernel.Bind<IBoardServices>().To<BoardServices>();
+
+            kernel.Bind<IUserServices>().To<UserServices>();
         }        
     }
 }

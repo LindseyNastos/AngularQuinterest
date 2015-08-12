@@ -4,9 +4,19 @@
 
     //PINS
 
-    app.controller('PinIndexController', ['pinService', '$modal', function (pinService, $modal) {
+    app.controller('PinIndexController', ['$location', 'pinService', '$modal', function ($location, pinService, $modal) {
         var self = this;
         self.pins = [];
+
+        //Profile Button
+        self.profile = function () {
+            $location.path('/profile')
+        };
+
+        //Details Button
+        self.details = function (id) {
+            $location.path('/pinDetails/' + id);
+        };
 
         //Pin List
         self.getPins = function () {
@@ -24,20 +34,34 @@
             });
         };
 
-
+        //Pin It
+        self.showPinItModal = function (id) {
+            $modal.open({
+                templateUrl: '/ngViews/modals/pinItModal.html',
+                controller: 'PinItModal',
+                controllerAs: 'modal',
+                resolve: {
+                    id: function () {
+                        return id;
+                    }
+                }
+            });
+        };
 
         self.getPins();
 
     }]);
 
 
-    app.controller('PinDetailsController', ['id', 'pinService', '$modal', function (id, pinService, $modal) {
+    app.controller('PinDetailsController', ['$location', '$routeParams', 'pinService', '$modal', function ($location, $routeParams, pinService, $modal) {
         var self = this;
+
+        self.pin = pinService.get($routeParams.id);
 
         //Pin It
         self.showPinItModal = function (id) {
             $modal.open({
-                templateUrl: '/ngViews/modals/createPinModal.html',
+                templateUrl: '/ngViews/modals/pinItModal.html',
                 controller: 'PinItModal',
                 controllerAs: 'modal',
                 resolve: {
@@ -59,6 +83,8 @@
                         return id;
                     }
                 }
+            }).result.then(function () {
+                self.pin = pinService.get(id);
             });
         };
 
@@ -73,19 +99,38 @@
                         return id;
                     }
                 }
+            }).result.then(function () {
+                $location.path('/');
             });
         };
 
     }]);
 
 
-    app.controller('PinItModal', ['id', '$modalInstance', 'pinService', 'boardService', function (id, $modalInstance, pinService, boardService) {
+    app.controller('PinItModal', ['$modal', 'id', '$routeParams', '$modalInstance', 'pinService', 'boardService', function ($modal, id, $routeParams, $modalInstance, pinService, boardService) {
         var self = this;
-        self.boards = [];
+
+        //Get Pin
+        self.pin = pinService.get(id);
 
         //Board List
+        self.boards = boardService.boardList();
+
+
         self.getBoards = function () {
             self.boards = boardService.boardList();
+
+        };
+
+        
+        self.showCreateBoardModal = function () {
+            $modal.open({
+                templateUrl: '/ngViews/modals/createBoardModal.html',
+                controller: 'CreateBoardModal',
+                controllerAs: 'modal'
+            }).result.then(function () {
+                self.getBoards();
+            });
         };
 
         //self.clone = function (id) {
@@ -95,7 +140,7 @@
         //};
 
         self.exit = function () {
-            $modalInstance.close();
+            $modalInstance.dismiss();
         };
 
     }]);
@@ -154,15 +199,19 @@
 
     app.controller('BoardIndexController', function ($modal, boardService) {
         var self = this;
+
         self.boards = [];
+
+        
 
         //Board List
         self.getBoards = function () {
             self.boards = boardService.boardList();
+            
         };
 
         //Create Board
-        self.showBoardModal = function () {
+        self.showCreateBoardModal = function () {
             $modal.open({
                 templateUrl: '/ngViews/modals/createBoardModal.html',
                 controller: 'CreateBoardModal',
@@ -173,13 +222,11 @@
         };
 
         //Create Pin
-        self.showPinModal = function () {
+        self.showCreatePinModal = function () {
             $modal.open({
                 templateUrl: 'ngViews/modals/createPinModal.html',
                 controller: 'CreatePinModal',
                 controllerAs: 'modal'
-            }).result.then(function () {
-                self.getPins();
             });
         };
 
@@ -187,40 +234,49 @@
     });
 
 
-    app.controller('BoardDetailsController', function (id, $modal, boardService) {
+    app.controller('BoardDetailsController', function ($location, $routeParams, $modal, boardService) {
         var self = this;
 
-        self.pins = [];
+        self.pins = boardService.getPins($routeParams.id);
+       
+        self.details = function (id) {
+            $location.path('/pinDetails/' + id);
+        };
+
         //Need to get pins on that board
+        self.board = boardService.get($routeParams.id);
 
-
-        //Create Board
-        self.showCreateModal = function () {
+        //Create Pin
+        self.showCreatePinModal = function () {
             $modal.open({
-                templateUrl: 'ngViews/modals/createBoardModal.html',
-                controller: 'CreateBoardModal',
+                templateUrl: 'ngViews/modals/createPinModal.html',
+                controller: 'CreatePinModal',
                 controllerAs: 'modal'
+            }).result.then(function () {
+                self.pins = boardService.getPins($routeParams.id);
             });
         };
 
         //Edit Board
-        self.showEditModal = function (id) {
+        self.showEditBoardModal = function (id) {
             $modal.open({
                 templateUrl: 'ngViews/modals/createBoardModal.html',
                 controller: 'EditBoardModal',
                 controllerAs: 'modal',
                 resolve: {
                     id: function () {
-                        return id;
+                        return $routeParams.id;
                     }
                 }
+            }).result.then(function () {
+                self.board = boardService.get($routeParams.id); 
             });
         };
 
         //Delete Board
-        self.showRemoveModal = function (id) {
+        self.showRemoveBoardModal = function (id) {
             $modal.open({
-                templateUrl: 'ngViews/modals/removePinModal.html',
+                templateUrl: 'ngViews/modals/removeBoardModal.html',
                 controller: 'DeleteBoardModal',
                 controllerAs: 'modal',
                 resolve: {
@@ -228,6 +284,8 @@
                         return id;
                     }
                 }
+            }).result.then(function () {
+                $location.path('/profile');
             });
         };
 
@@ -236,8 +294,6 @@
 
     app.controller('CreateBoardModal', function ($modalInstance, boardService) {
         var self = this;
-
-        self.board = boardService.get(id);
 
         self.save = function () {
             boardService.save(self.board).$promise.then(function () {
@@ -249,6 +305,8 @@
 
     app.controller('EditBoardModal', function ($modalInstance, id, boardService) {
         var self = this;
+
+        self.board = boardService.get(id);
 
         self.save = function () {
             boardService.save(self.board).$promise.then(function () {

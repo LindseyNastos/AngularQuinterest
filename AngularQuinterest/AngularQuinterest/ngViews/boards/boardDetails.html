@@ -1,22 +1,32 @@
 ﻿<h1>{{main.board.boardName}} Board</h1>
 <p class="localLink">
-    {{main.board.numPins}} Pins
+    {{main.board.numPinsOnBoard}} Pins
     <br />
     {{main.board.description}}
 </p>
 <p>
-    <button ng-click="main.showCreateModal()">Create Board</button>
-    <button ng-click="main.showEditModal()">Edit Board</button>
-    <button ng-click="main.showRemoveModal()">Delete Board</button>
-    <a class="localLink" href="/profile">Back to Profile</a>
+    <button ng-click="main.showCreatePinModal()"><i class="fa fa-plus"></i> Create Pin</button>
+    <button ng-click="main.showEditBoardModal()"><i class="fa fa-pencil"></i> Edit Board</button>
+    <button ng-click="main.showRemoveBoardModal()"><i class="fa fa-trash-o"></i> Delete Board</button>
 </p>
-<div ng-repeat="pin in main.pins" class="col-sm-3 smallPinDiv">
-    <a class="noDecoHover" href="pinDetails/{{pin.id}}">
-        <h4>{{pin.title}}</h4>
-        <br />
-        <img class="smallPinImage" ng-src="{{pin.imageUrl}}" />
-        <br />
-        {{pin.shortDescription}}
-        <br />
-    </a>
+
+<div class="section">
+    <div class="row">
+        <div class="col-md-3" ng-repeat="pin in main.pins">
+            <div class="sortThis panel pins panel-default">
+                <div class="panel-heading">
+                    {{pin.title}}
+                </div>
+                <div class="panel-body">
+                    <img class="smallPinImage img-responsive" ng-src="{{pin.imageUrl}}" />
+                    <hr />
+                    <p>{{pin.shortDescription}}</p>
+                    <button class="btn-danger" ng-click="main.pinItModal(pin.id)"><i class="fa fa-thumb-tack"></i> Pin It</button>
+                    <button ng-click="main.details(pin.id)"><i class="fa fa-search-plus"></i> Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
