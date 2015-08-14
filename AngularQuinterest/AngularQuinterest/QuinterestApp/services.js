@@ -1,8 +1,10 @@
 ﻿(function () {
 
-    angular.module('QuinterestApp').factory('pinService', function ($resource) {
+    angular.module('QuinterestApp').factory('pinService', function ($http, $resource) {
 
         var Pin = $resource('/api/pins/:id');
+
+        $http.defaults.headers.common['Authorization'] = 'bearer ' + sessionStorage.getItem("access_token");
 
         var _pinList = function () {
             return Pin.query();
@@ -69,7 +71,21 @@
 
     });
 
+    angular.module('QuinterestApp').factory('accountService', function ($http) {
+        var _userLogin = function (login) {
+            var data = "grant_type=password&username=" + login.userName + "&password=" + login.password;
 
+            return $http.post('/Token', data,
+            {
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            })
+        };
+
+        return {
+            userLogin: _userLogin
+        }
+
+    });
 
 
 })();

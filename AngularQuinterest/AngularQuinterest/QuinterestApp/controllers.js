@@ -4,9 +4,40 @@
 
     //PINS
 
-    app.controller('PinIndexController', ['$location', 'pinService', '$modal', function ($location, pinService, $modal) {
+    app.controller('PinIndexController', ['$resource', '$location', 'pinService', 'accountService', '$modal', function ($resource, $location, pinService, accountService, $modal) {
         var self = this;
+
+        
+
+        //Pin List
+        self.getPins = function () {
+            self.pins = pinService.pinList();
+        };
+
         self.pins = [];
+        
+        self.userLogin = function () {
+            accountService.userLogin(self.login)
+                .success(function (result) {
+                    sessionStorage.setItem("access_token", result.access_token);
+                    self.getPins();
+                }).error(function () {
+                self.loginErrorMessage = "The user name/password is incorrect."
+            });
+        };
+
+
+
+        self.isLoggedIn = function () {
+            return sessionStorage.getItem("access_token");
+
+        };
+
+        self.logOut = function () {
+            sessionStorage.removeItem("access_token");
+
+        };
+
 
         //Profile Button
         self.profile = function () {
@@ -18,10 +49,7 @@
             $location.path('/pinDetails/' + id);
         };
 
-        //Pin List
-        self.getPins = function () {
-            self.pins = pinService.pinList();
-        };
+        
 
         //Create Pin
         self.showCreateModal = function () {
@@ -330,52 +358,6 @@
         };
 
     });
-
-
-
-
-
-    //LOGIN
-
-    app.controller('AccountController', function ($http) {
-        var self = this;
-
-        self.login = function () {
-            self.loginMessage = '';
-            var data = "grant_type=password&username=" + self.login.email + "&password=" + self.login.password;
-
-            $http.post('/Token', data,
-            {
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-            }).success(function (result) {
-                self.login = null;
-                $http.defaults.headers.common['Authorization'] = 'bearer ' + result.access_token;
-                $http.get('/api/admin/isAdmin').success(function (isAdmin) {
-                    sessionStorage.setItem('accessToken', result.access_token);
-                    sessionStorage.setItem('isAdmin', isAdmin);
-                })
-            }).error(function () {
-                self.loginMessage = 'Invalid user name/password';
-            });
-        };
-
-        self.logout = function () {
-            sessionStorage.removeItem('accessToken');
-            sessionStorage.removeItem('isAdmin');
-        };
-
-        self.isAdmin = function () {
-            return sessionStorage.getItem('isAdmin') === 'true';
-        };
-
-        self.isLoggedIn = function () {
-            return sessionStorage.getItem('accessToken') != undefined;
-        };
-
-
-    });
-
-
 
 
 })();

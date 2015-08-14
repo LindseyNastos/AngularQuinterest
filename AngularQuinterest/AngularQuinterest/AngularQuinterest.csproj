@@ -227,6 +227,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="Infrastructure\GenericRepository.cs" />
     <Compile Include="Migrations\201508050151577_initial.cs" />
     <Compile Include="Migrations\201508050151577_initial.Designer.cs">
@@ -259,6 +260,10 @@
     <Compile Include="Migrations\201508120104193_mig8.cs" />
     <Compile Include="Migrations\201508120104193_mig8.Designer.cs">
       <DependentUpon>201508120104193_mig8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508130057010_mig9.cs" />
+    <Compile Include="Migrations\201508130057010_mig9.Designer.cs">
+      <DependentUpon>201508130057010_mig9.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -440,6 +445,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201508120104193_mig8.resx">
       <DependentUpon>201508120104193_mig8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508130057010_mig9.resx">
+      <DependentUpon>201508130057010_mig9.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

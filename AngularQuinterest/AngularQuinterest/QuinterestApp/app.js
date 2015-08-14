@@ -21,6 +21,11 @@
                 controller: 'BoardDetailsController',
                 controllerAs: 'main'
             })
+            .when('/registerLogin', {
+                templateUrl: 'ngViews/registerAndLogin.html',
+                controller: 'RegisterLoginController',
+                controllerAs: 'main'
+            })
             .otherwise({
                 templateUrl: '/ngViews/notFound.html'
             });

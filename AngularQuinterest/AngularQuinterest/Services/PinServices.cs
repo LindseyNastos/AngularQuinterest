@@ -16,9 +16,12 @@ namespace AngularQuinterest.Services
             _repo = repo;
         }
 
+        
+
         public IList<Pin> PinList()
         {
-            return _repo.Query<Pin>().ToList();
+            return _repo.Query<Pin>().OrderBy(p => Guid.NewGuid()).ToList();
+            
         }
 
         public Pin FindPin(int pinId)

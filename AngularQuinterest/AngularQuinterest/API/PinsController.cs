@@ -8,9 +8,11 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using System.Security.Claims;
 
 namespace AngularQuinterest.API
 {
+    [Authorize]
     public class PinsController : ApiController
     {
         private IPinServices _service;
@@ -21,9 +23,19 @@ namespace AngularQuinterest.API
         }
 
         // GET: api/Pins
-        public IEnumerable<Pin> Get()
+ 
+        public HttpResponseMessage Get()
         {
-            return _service.PinList();
+            //var claimsUser = this.User as ClaimsPrincipal;
+            //if (!claimsUser.HasClaim("IsAdmin", "true"))
+            //{
+            //    return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "Need Admin permissions!");
+            //}
+
+            var pins = _service.PinList(); 
+
+            return Request.CreateResponse(HttpStatusCode.OK, pins);
+            
         }
 
         // GET: api/Pins/5
@@ -32,11 +44,7 @@ namespace AngularQuinterest.API
             return _service.FindPin(id);
         }
 
-        [HttpPost]
-        public Boolean SaveOrder(int[] order)
-        {
-            return true;
-        }
+        
 
 
         // POST: api/Pins

@@ -45,6 +45,7 @@ namespace AngularQuinterest.Models
         //[MaxLength(1000, ErrorMessage = "*limit: 5000 characters")]
         //[Display(Name = "Long Description")]
         //[DataType(DataType.MultilineText)]
+
         public string LongDescription { get; set; }
 
         public string UserId { get; set; }
@@ -53,7 +54,7 @@ namespace AngularQuinterest.Models
 
         public ICollection<Comment> Comments { get; set; }
 
-
+        
 
 
         //Maybe add later?

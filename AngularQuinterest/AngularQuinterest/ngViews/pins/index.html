@@ -1,36 +1,87 @@
-﻿<h1>All Pins</h1>
-<p>
-    <span style="float:right; position:relative; top:-50px;">
-        <label><i class="fa fa-search"></i> Search:</label>
-        <input class="form-control" type="text" ng-model="searchText" />
-    </span>
-
-    <button ng-click="main.showCreateModal()"><i class="fa fa-plus"></i> Create Pin</button>
-
-    <button ng-click="main.profile()"><i class="fa fa-user"></i> Profile</button>
-
-    
-</p>
-<hr />
-
-
-
-<div class="section">
+﻿
+<div ng-if="!main.isLoggedIn()">
+    {{main.loginErrorMessage}}
     <div class="row">
-        <div class="col-md-3" ng-repeat="pin in main.pins | filter:searchText">
-            <div class="panel pins panel-default">
-                
-                <div class="panel-body">
-                    <h4>{{pin.title}}</h4>
-                    <img class="smallPinImage img-responsive" ng-src="{{pin.imageUrl}}" />
-                    <hr />
-                    <p>{{pin.shortDescription}}</p>
-                    <button class="btn-danger" ng-click="main.showPinItModal(pin.id)"><i class="fa fa-thumb-tack"></i> Pin It</button>
-                    <button ng-click="main.details(pin.id)"><i class="fa fa-search-plus"></i> Details</button>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-4">
+            <h2>Log In.</h2>
+            <form ng-submit="main.userLogin()">
+                <div>
+                    <label>Email:</label>
+                    <input class="form-control" ng-model="main.login.userName" type="text" />
+                </div>
+                <div>
+                    <label>Password:</label>
+                    <input class="form-control" ng-model="main.login.password" type="password" />
+                </div>
+                <div>
+                    <input style="margin-top:5px" type="submit" value="Log In" />
+                </div>
+            </form>
+
+        </div>
+        <div class="col-sm-4">
+            <h2>Register.</h2>
+            <form ng-submit="main.userRegister()">
+                <div>
+                    <label>Email:</label>
+                    <input class="form-control" type="text" />
+                </div>
+                <div>
+                    <label>Password:</label>
+                    <input class="form-control" type="password" />
+                </div>
+                <div>
+                    <label>Confirm Password:</label>
+                    <input class="form-control" type="password" />
+                </div>
+                <div>
+                    <input style="margin-top:5px" type="submit" value="Register" />
+                </div>
+            </form>
+
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+
+</div>
+
+
+<div ng-if="main.isLoggedIn()">
+    <button ng-click="main.logOut()">Log Out</button>
+    <h1>All Pins</h1>
+    <p>
+        <span style="float:right; position:relative; top:-50px;">
+            <label><i class="fa fa-search"></i> Search:</label>
+            <input class="form-control" type="text" ng-model="searchText" />
+        </span>
+
+        <button ng-click="main.showCreateModal()"><i class="fa fa-plus"></i> Create Pin</button>
+
+        <button ng-click="main.profile()"><i class="fa fa-user"></i> Profile</button>
+
+
+    </p>
+    <hr />
+
+
+
+    <div class="section">
+        <div class="row">
+            <div class="col-md-3" ng-repeat="pin in main.pins | filter:searchText">
+                <div class="panel pins panel-default">
+
+                    <div class="panel-body">
+                        <h4>{{pin.title}}</h4>
+                        <img class="smallPinImage img-responsive" ng-src="{{pin.imageUrl}}" />
+                        <hr />
+                        <p>{{pin.shortDescription}}</p>
+                        <button class="btn-danger" ng-click="main.showPinItModal(pin.id)"><i class="fa fa-thumb-tack"></i> Pin It</button>
+                        <button ng-click="main.details(pin.id)"><i class="fa fa-search-plus"></i> Details</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
-
-

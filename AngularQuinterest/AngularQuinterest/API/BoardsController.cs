@@ -9,6 +9,7 @@ using System.Web.Http;
 
 namespace AngularQuinterest.API
 {
+    [Authorize]
     public class BoardsController : ApiController
     {
         private IBoardServices _service;
