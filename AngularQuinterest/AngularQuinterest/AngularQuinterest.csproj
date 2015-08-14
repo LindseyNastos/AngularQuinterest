@@ -229,42 +229,6 @@
     </Compile>
     <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="Infrastructure\GenericRepository.cs" />
-    <Compile Include="Migrations\201508050151577_initial.cs" />
-    <Compile Include="Migrations\201508050151577_initial.Designer.cs">
-      <DependentUpon>201508050151577_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508060150599_mig2.cs" />
-    <Compile Include="Migrations\201508060150599_mig2.Designer.cs">
-      <DependentUpon>201508060150599_mig2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508060153479_mig3.cs" />
-    <Compile Include="Migrations\201508060153479_mig3.Designer.cs">
-      <DependentUpon>201508060153479_mig3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508072212508_mig4.cs" />
-    <Compile Include="Migrations\201508072212508_mig4.Designer.cs">
-      <DependentUpon>201508072212508_mig4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508080215430_mig5.cs" />
-    <Compile Include="Migrations\201508080215430_mig5.Designer.cs">
-      <DependentUpon>201508080215430_mig5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508080216434_mig6.cs" />
-    <Compile Include="Migrations\201508080216434_mig6.Designer.cs">
-      <DependentUpon>201508080216434_mig6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508080218142_mig7.cs" />
-    <Compile Include="Migrations\201508080218142_mig7.Designer.cs">
-      <DependentUpon>201508080218142_mig7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508120104193_mig8.cs" />
-    <Compile Include="Migrations\201508120104193_mig8.Designer.cs">
-      <DependentUpon>201508120104193_mig8.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508130057010_mig9.cs" />
-    <Compile Include="Migrations\201508130057010_mig9.Designer.cs">
-      <DependentUpon>201508130057010_mig9.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -420,35 +384,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201508050151577_initial.resx">
-      <DependentUpon>201508050151577_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508060150599_mig2.resx">
-      <DependentUpon>201508060150599_mig2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508060153479_mig3.resx">
-      <DependentUpon>201508060153479_mig3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508072212508_mig4.resx">
-      <DependentUpon>201508072212508_mig4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508080215430_mig5.resx">
-      <DependentUpon>201508080215430_mig5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508080216434_mig6.resx">
-      <DependentUpon>201508080216434_mig6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508080218142_mig7.resx">
-      <DependentUpon>201508080218142_mig7.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508120104193_mig8.resx">
-      <DependentUpon>201508120104193_mig8.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508130057010_mig9.resx">
-      <DependentUpon>201508130057010_mig9.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

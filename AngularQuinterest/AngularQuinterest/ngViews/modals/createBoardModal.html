@@ -4,21 +4,21 @@
             <form ng-cloak name="createBoard" ng-submit="modal.save()" novalidate>
 
                 <label>Board Name</label>
-                <input name="boardName" ng-model="modal.board.boardName" required />
+                <input class="form-control" name="boardName" ng-model="modal.board.boardName" required />
                 <span ng-show="createBoard.title.$dirty&&createBoard.title.$error.required" class="error">
                     *required
                 </span>
                 <br />
 
                 <label>Image Url</label>
-                <input name="image" ng-model="modal.board.imageUrl" required />
+                <input class="form-control" name="image" ng-model="modal.board.imageUrl" required />
                 <span ng-show="createBoard.image.$dirty&&createBoard.image.$error.required" class="error">
                     *required
                 </span>
                 <br />
 
                 <label>Description</label>
-                <input ng-model="modal.board.description" />
+                <input class="form-control" ng-model="modal.board.description" />
                 <br />
 
                 <input type="submit" value="Save" ng-disabled="createBoard.$invalid" />

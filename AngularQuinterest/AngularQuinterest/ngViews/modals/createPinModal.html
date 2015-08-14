@@ -4,42 +4,41 @@
             <form ng-cloak name="createPin" ng-submit="modal.save()" novalidate>
 
                 <label>Title</label>
-                <input name="title" ng-model="modal.pin.title" required />
+                <input class="form-control" name="title" ng-model="modal.pin.title" required />
                 <span ng-show="createPin.title.$dirty&&createPin.title.$error.required" class="error">
                     *required
                 </span>
                 <br />
 
                 <label>Image Url</label>
-                <input name="image" ng-model="modal.pin.imageUrl" required />
+                <input class="form-control" name="image" ng-model="modal.pin.imageUrl" required />
                 <span ng-show="createPin.image.$dirty&&createPin.image.$error.required" class="error">
                     *required
                 </span>
                 <br />
 
                 <label>Website</label>
-                <input ng-model="main.pin.website" />
+                <input class="form-control" ng-model="main.pin.website" />
                 <br />
 
                 <label>Board</label>
-                <input name="board" type="number" ng-model="modal.pin.boardId" />
+                <input class="form-control" name="board" type="number" ng-model="modal.pin.boardId" />
                 <span ng-show="createPin.board.$dirty&&createPin.$error.number" class="error">
                     *must be a number (for now)
                 </span>
                 <br />
 
                 <label>Short Description</label>
-                <input ng-model="modal.pin.shortDescription" />
+                <input class="form-control" ng-model="modal.pin.shortDescription" />
                 <br />
 
                 <label>Long Description</label>
-                <input ng-model="modal.pin.longDescription" />
+                <input class="form-control" ng-model="modal.pin.longDescription" />
                 <br />
 
                 <input type="submit" value="Save" ng-disabled="createPin.$invalid" />
 
             </form>
-            <button ng-click="modal.exit()">Exit</button>
         </div>
 
         <div class="col-sm-3 smallPinDiv">

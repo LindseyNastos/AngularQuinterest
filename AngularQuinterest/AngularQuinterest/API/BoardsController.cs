@@ -23,6 +23,7 @@ namespace AngularQuinterest.API
         public IEnumerable<Board> Get()
         {
             return _service.BoardList();
+            
         }
 
         // GET: api/Boards/5

@@ -23,7 +23,7 @@ namespace AngularQuinterest.Services
 
         public Board FindBoard(int boardId)
         {
-            return _repo.Query<Board>().Where(b => b.Id == boardId).FirstOrDefault();
+            return _repo.Query<Board>().Include(b => b.Pins).Where(b => b.Id == boardId).FirstOrDefault();
         }
 
         

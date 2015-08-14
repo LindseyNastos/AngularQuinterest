@@ -1,10 +1,10 @@
 ﻿(function () {
 
-    angular.module('QuinterestApp').factory('pinService', function ($http, $resource) {
+    angular.module('QuinterestApp').factory('pinService', function ($resource) {
 
         var Pin = $resource('/api/pins/:id');
 
-        $http.defaults.headers.common['Authorization'] = 'bearer ' + sessionStorage.getItem("access_token");
+       
 
         var _pinList = function () {
             return Pin.query();

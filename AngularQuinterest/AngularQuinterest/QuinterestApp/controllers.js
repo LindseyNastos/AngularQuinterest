@@ -4,7 +4,7 @@
 
     //PINS
 
-    app.controller('PinIndexController', ['$resource', '$location', 'pinService', 'accountService', '$modal', function ($resource, $location, pinService, accountService, $modal) {
+    app.controller('PinIndexController', ['$http', '$resource', '$location', 'pinService', 'accountService', '$modal', function ($http, $resource, $location, pinService, accountService, $modal) {
         var self = this;
 
         
@@ -20,6 +20,7 @@
             accountService.userLogin(self.login)
                 .success(function (result) {
                     sessionStorage.setItem("access_token", result.access_token);
+                    $http.defaults.headers.common['Authorization'] = 'bearer ' + sessionStorage.getItem("access_token");
                     self.getPins();
                 }).error(function () {
                 self.loginErrorMessage = "The user name/password is incorrect."
