@@ -4,8 +4,6 @@
 
         var Pin = $resource('/api/pins/:id');
 
-       
-
         var _pinList = function () {
             return Pin.query();
         };

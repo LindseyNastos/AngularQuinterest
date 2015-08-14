@@ -22,25 +22,33 @@
 
         <div class="col-sm-4">
             <h2>Register.</h2>
-            <form ng-submit="main.userRegister()">
+            <form name="userRegistration" ng-submit="main.userRegister()" novalidate>
                 <div>
                     <label>Username:</label>
-                    <input class="form-control" ng-model="main.register.displayName" type="text" />
+                    <input class="form-control" name="displayName" ng-model="main.register.displayName" type="text" required />
                 </div>
+                <span ng-show="userRegistration.displayName.$dirty&&userRegistration.displayName.$error.required" class="error">*required</span>
+
                 <div>
                     <label>Email:</label>
-                    <input class="form-control" ng-model="main.register.email" type="text" />
+                    <input class="form-control" name="email" ng-model="main.register.email" type="text" required />
                 </div>
+                <span ng-show="userRegistration.email.$dirty&&userRegistration.email.$error.required" class="error">*required</span>
+
                 <div>
                     <label>Password:</label>
-                    <input class="form-control" ng-model="main.register.password" type="password" />
+                    <input class="form-control" name="password" ng-model="main.register.password" type="password" required />
                 </div>
+                <span ng-show="userRegistration.password.$dirty&&userRegistration.password.$error.required" class="error">*required</span>
+
                 <div>
                     <label>Confirm Password:</label>
-                    <input class="form-control" type="password" />
+                    <input class="form-control" name="confirmPassword" ng-model="main.register.confirmPassword" type="password" required />
                 </div>
+                <span ng-show="userRegistration.confirmPassword.$dirty&&userRegistration.confirmPassword.$error.required" class="error">*required</span>
+
                 <div>
-                    <input style="margin-top:5px" type="submit" value="Register" />
+                    <input style="margin-top:5px" type="submit" value="Register" ng-disabled="userRegistration.$invalid" />
                 </div>
             </form>
 
