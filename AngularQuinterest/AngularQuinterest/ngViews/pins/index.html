@@ -18,18 +18,22 @@
                     <input style="margin-top:5px" type="submit" value="Log In" />
                 </div>
             </form>
-
         </div>
+
         <div class="col-sm-4">
             <h2>Register.</h2>
             <form ng-submit="main.userRegister()">
                 <div>
+                    <label>Username:</label>
+                    <input class="form-control" ng-model="main.register.displayName" type="text" />
+                </div>
+                <div>
                     <label>Email:</label>
-                    <input class="form-control" type="text" />
+                    <input class="form-control" ng-model="main.register.email" type="text" />
                 </div>
                 <div>
                     <label>Password:</label>
-                    <input class="form-control" type="password" />
+                    <input class="form-control" ng-model="main.register.password" type="password" />
                 </div>
                 <div>
                     <label>Confirm Password:</label>
@@ -63,8 +67,6 @@
 
     </p>
     <hr />
-
-
 
     <div class="section">
         <div class="row">

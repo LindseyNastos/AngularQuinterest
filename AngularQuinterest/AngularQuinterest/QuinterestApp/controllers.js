@@ -29,6 +29,7 @@
 
 
 
+
         self.isLoggedIn = function () {
             return sessionStorage.getItem("access_token");
 
