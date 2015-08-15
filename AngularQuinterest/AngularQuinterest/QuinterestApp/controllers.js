@@ -191,10 +191,14 @@
     }]);
 
 
-    app.controller('CreatePinModal', function ($modalInstance, pinService) {
+    app.controller('CreatePinModal', function ($modalInstance, boardService, pinService) {
         var self = this;
 
+        self.boards = boardService.boardList();
+
+
         self.save = function () {
+
             pinService.save(self.pin).$promise.then(function () {
                 $modalInstance.close();
             })

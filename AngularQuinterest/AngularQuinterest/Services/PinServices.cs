@@ -29,6 +29,13 @@ namespace AngularQuinterest.Services
             return _repo.Query<Pin>().Where(c => c.Id == pinId).FirstOrDefault();
         }
 
+        //public Board FindBoard(int boardId)
+        //{
+        //    return _repo.Query<Board>()
+        //        .Where(b => b.Id == boardId)
+        //        .Include(b => b.Pins)
+        //        .FirstOrDefault();
+        //}
 
         //public ApplicationUser FindUser(string userId)
         //{
@@ -56,7 +63,7 @@ namespace AngularQuinterest.Services
         {
             _repo.Add<Pin>(pin);
             _repo.SaveChanges();
-            var boardId = pin.BoardId;
+            //var boardId = pin.BoardId;
             //this.UpdatePinCount(boardId);
         }
 
