@@ -14,6 +14,8 @@
             self.pins = pinService.pinList();
         };
 
+        
+
         self.pins = [];
         
         self.userLogin = function () {
@@ -28,7 +30,20 @@
         };
 
 
+        self.register = {};
 
+        self.registerUser = function () {
+            accountService.userRegistration(self.register);
+                    var data = {};
+                    data.userName = self.register.email;
+                    data.password = self.register.password;
+                    accountService.userLogin(data)
+                        .success(function (result) {
+                            sessionStorage.setItem("access_token", result.access_token);
+                            $http.defaults.headers.common['Authorization'] = 'bearer ' + sessionStorage.getItem("access_token");
+                            self.getPins();
+            });
+        };
 
         self.isLoggedIn = function () {
             return sessionStorage.getItem("access_token");

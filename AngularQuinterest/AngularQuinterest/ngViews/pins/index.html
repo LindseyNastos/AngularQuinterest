@@ -48,7 +48,7 @@
                 <span ng-show="userRegistration.confirmPassword.$dirty&&userRegistration.confirmPassword.$error.required" class="error">*required</span>
 
                 <div>
-                    <input style="margin-top:5px" type="submit" value="Register" ng-disabled="userRegistration.$invalid" />
+                    <input style="margin-top:5px" type="submit" value="Register" ng-click="main.registerUser()" ng-disabled="userRegistration.$invalid" />
                 </div>
             </form>
 

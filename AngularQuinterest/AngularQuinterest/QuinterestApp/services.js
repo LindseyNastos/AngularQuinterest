@@ -69,7 +69,7 @@
 
     });
 
-    angular.module('QuinterestApp').factory('accountService', function ($http) {
+    angular.module('QuinterestApp').factory('accountService', function ($http, $resource) {
 
         var _userLogin = function (login) {
             var data = "grant_type=password&username=" + login.userName + "&password=" + login.password;
@@ -80,8 +80,11 @@
             })
         };
 
-        var _userRegistration = function () {
+        var _userRegistration = function (registrationInfo) {
+            var register = $resource('api/Account/Register');
+            register.save(registrationInfo);
 
+            return 
         };
 
         return {
