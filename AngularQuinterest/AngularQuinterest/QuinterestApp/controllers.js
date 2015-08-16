@@ -211,10 +211,12 @@
     });
 
 
-    app.controller('EditPinModal', function ($modalInstance, pinService, id) { 
+    app.controller('EditPinModal', function ($modalInstance, boardService, pinService, id) { 
         var self = this;
 
         self.pin = pinService.get(id);
+
+        self.boards = boardService.boardList();
 
         self.save = function () {
             pinService.save(self.pin).$promise.then(function () {
