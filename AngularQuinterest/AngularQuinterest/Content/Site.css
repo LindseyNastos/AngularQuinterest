@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-image: url('bokeh1.jpg');
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -95,9 +96,9 @@ textarea {
     text-decoration:none;
 }
 
-body {
+/*body {
     background-image: url('bokeh1.jpg');
-}
+}*/
 
 h1, .localLink, h4 {
     color:#222222;
@@ -132,6 +133,28 @@ h1, .localLink, h4 {
     border-radius:4px;
 }
 
+.mainBoardImages {
+    max-height:225px;
+}
 
+.createPinModalPanel {
+    width:200px;
+    height:400px;
+    margin-top:30px;
+}
 
+.modalPinImage {
+    max-width:100%;
+    max-height:250px;
+}
 
+.createBoardModalPanel {
+    width:200px;
+    height:250px;
+    margin-top:20px;
+}
+
+.modalBoardImage {
+    max-width:100%;
+    max-height:125px;
+}

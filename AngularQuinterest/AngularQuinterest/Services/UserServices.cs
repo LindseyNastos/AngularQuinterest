@@ -16,6 +16,14 @@ namespace AngularQuinterest.Services
             _repo = repo;
         }
 
+        public ApplicationUser Profile(string id)
+        {
+            return _repo.Query<ApplicationUser>()
+                .Include(u => u.Boards)
+                .Include(u => u.Pins)
+                .Where(u => u.Id == id)
+                .FirstOrDefault();
+        }
 
         public IList<Pin> PinsOnBoard(int boardId)
         {

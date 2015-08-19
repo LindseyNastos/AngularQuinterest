@@ -1,6 +1,6 @@
 ﻿<div class="modal-body">
     <div class="row">
-        <div class="col-sm-8 crudForms">
+        <div class="col-sm-7 crudForms">
             <form ng-cloak name="createPin" ng-submit="modal.save()" novalidate>
 
                 <label>Title</label>
@@ -41,11 +41,18 @@
             </form>
         </div>
 
-        <div class="col-sm-3 smallPinDiv">
-            <h4>{{modal.pin.title}}</h4>
-            <img class="smallPinImage" ng-src="{{modal.pin.imageUrl}}" />
-            <br />
-            {{modal.pin.shortDescription}}
+        <div class="col-sm-5 ">
+
+            <div class="panel createPinModalPanel panel-default">
+                <div class="panel-heading">
+                    {{modal.pin.title}}
+                </div>
+                <div class="panel-body">
+                    <img class="modalPinImage img-responsive" ng-src="{{modal.pin.imageUrl}}" />
+                    <hr />
+                    <p>{{modal.pin.shortDescription}}</p>
+                </div>
+            </div>
         </div>
 
         <div class="col-sm-1">

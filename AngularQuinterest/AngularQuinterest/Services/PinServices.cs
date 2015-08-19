@@ -26,7 +26,7 @@ namespace AngularQuinterest.Services
 
         public Pin FindPin(int pinId)
         {
-            return _repo.Query<Pin>().Where(c => c.Id == pinId).FirstOrDefault();
+            return _repo.Query<Pin>().Include(p => p.Board).Where(p => p.Id == pinId).FirstOrDefault();
         }
 
         //public Board FindBoard(int boardId)
@@ -63,8 +63,8 @@ namespace AngularQuinterest.Services
         {
             _repo.Add<Pin>(pin);
             _repo.SaveChanges();
-            //var boardId = pin.BoardId;
-            //this.UpdatePinCount(boardId);
+            var boardId = pin.BoardId;
+            this.UpdatePinCount(boardId);
         }
 
 
@@ -89,7 +89,7 @@ namespace AngularQuinterest.Services
 
             _repo.SaveChanges();
 
-            //this.UpdatePinCount(boardId);
+            this.UpdatePinCount(boardId);
 
         }
 
@@ -110,11 +110,11 @@ namespace AngularQuinterest.Services
 
             _repo.SaveChanges();
 
-            //if (originalBoardId != pin.BoardId)
-            //{
-            //    this.UpdatePinCount(originalBoardId);
-            //    this.UpdatePinCount(pin.BoardId);
-            //}
+            if (originalBoardId != pin.BoardId)
+            {
+                this.UpdatePinCount(originalBoardId);
+                this.UpdatePinCount(pin.BoardId);
+            }
         }
 
         public void Delete(int id)
@@ -124,7 +124,7 @@ namespace AngularQuinterest.Services
             _repo.Delete<Pin>(id);
             _repo.SaveChanges();
 
-            //this.UpdatePinCount(board.Id);
+            this.UpdatePinCount(board.Id);
         }
 
     }

@@ -1,6 +1,6 @@
 ﻿<div class="modal-body">
     <div class="row">
-        <div class="col-sm-8 crudForms">
+        <div class="col-sm-7 crudForms">
             <form ng-cloak name="createBoard" ng-submit="modal.save()" novalidate>
 
                 <label>Board Name</label>
@@ -26,12 +26,25 @@
             </form>
         </div>
 
-        <div class="col-sm-3 smallPinDiv">
+        <div class="col-sm-5">
+            <div class="panel createBoardModalPanel panel-default">
+                <div class="panel-heading">
+                    {{modal.board.boardName}}
+                </div>
+                <div class="panel-body">
+                    <img class="modalBoardImage img-responsive" ng-src="{{modal.board.imageUrl}}" />
+                    <hr />
+                    <p>{{modal.board.description}}</p>
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="col-sm-3 smallPinDiv">
             <h4>{{modal.board.boardName}}</h4>
             <img class="smallPinImage" ng-src="{{modal.board.imageUrl}}" />
             <br />
             {{modal.board.description}}
-        </div>
+        </div>-->
 
         <div class="col-sm-1">
         </div>

@@ -2,6 +2,7 @@
 using AngularQuinterest.Services;
 using System;
 using System.Collections.Generic;
+using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -20,9 +21,10 @@ namespace AngularQuinterest.API
         }
 
         // GET: api/User
-        public IEnumerable<string> Get()
+        public ApplicationUser Get()
         {
-            return new string[] { "value1", "value2" };
+            var id = this.User.Identity.GetUserId();
+            return _service.Profile(id);
         }
 
         // GET: api/User/5

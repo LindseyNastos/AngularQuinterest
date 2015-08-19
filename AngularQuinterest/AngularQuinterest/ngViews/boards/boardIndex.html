@@ -1,4 +1,4 @@
-﻿<h1>Profile</h1>
+﻿<h1>{{user.userName}}</h1>
 
 <button ng-click="main.showCreateBoardModal()"><i class="fa fa-plus"></i> Create Board</button>
  
@@ -17,11 +17,11 @@
                         {{board.boardName}}
                     </div>
                     <div class="panel-body">
-                        <img class="img-responsive" ng-src="{{board.imageUrl}}" />
+                        <img class="img-responsive mainBoardImages" ng-src="{{board.imageUrl}}" />
                         <br />
-                        <img class="tinyPinDiv img-responsive" ng-src="{{board.imageUrl}}" />
-                        <img class="tinyPinDiv img-responsive" ng-src="{{board.imageUrl}}" />
-                        <img class="tinyPinDiv img-responsive" ng-src="{{board.imageUrl}}" />
+                        <img class="tinyPinDiv img-responsive" ng-src="{{board.pins[0].imageUrl}}" />
+                        <img class="tinyPinDiv img-responsive" ng-src="{{board.pins[1].imageUrl}}" />
+                        <img class="tinyPinDiv img-responsive" ng-src="{{board.pins[2].imageUrl}}" />
                         <hr />
                         <p>{{board.description}}</p>
                     </div>

@@ -243,22 +243,23 @@
     });
 
 
-
-
-
+   
     //BOARDS
 
     app.controller('BoardIndexController', function ($modal, boardService) {
         var self = this;
 
-        self.boards = [];
-
-        
+        var boards = [];
 
         //Board List
         self.getBoards = function () {
             self.boards = boardService.boardList();
-            
+        };
+
+        var user = {};
+
+        self.userProfile = function () {
+            self.user = boardService.profile();
         };
 
         //Create Board
@@ -268,7 +269,7 @@
                 controller: 'CreateBoardModal',
                 controllerAs: 'modal'
             }).result.then(function () {
-                self.getBoards();
+                self.userProfile();
             });
         };
 
@@ -281,6 +282,7 @@
             });
         };
 
+        self.userProfile();
         self.getBoards();
     });
 
@@ -289,6 +291,8 @@
         var self = this;
 
         self.pins = boardService.getPins($routeParams.id);
+
+        self.board = boardService.get($routeParams.id);
        
         self.details = function (id) {
             $location.path('/pinDetails/' + id);
@@ -305,6 +309,7 @@
                 controllerAs: 'modal'
             }).result.then(function () {
                 self.pins = boardService.getPins($routeParams.id);
+                self.board = boardService.get($routeParams.id);
             });
         };
 
@@ -367,7 +372,7 @@
     });
 
 
-    app.controller('DeleteBoardModal', function ($modalInstance, id, boardService) {
+    app.controller('DeleteBoardModal', function ($modalInstance, boardService, id) {
         var self = this;
 
         self.remove = function () {

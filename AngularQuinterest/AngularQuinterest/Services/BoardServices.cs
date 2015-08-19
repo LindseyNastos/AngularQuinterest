@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 
 namespace AngularQuinterest.Services
 {
@@ -16,9 +17,9 @@ namespace AngularQuinterest.Services
             _repo = repo;
         }
 
-        public IList<Board> BoardList()
+        public IList<Board> BoardList(string userId)
         {
-            return _repo.Query<Board>().ToList();
+            return _repo.Query<Board>().Include(b => b.Pins).Where(b => b.UserId == userId).ToList();
         }
 
         public Board FindBoard(int boardId)
@@ -40,12 +41,13 @@ namespace AngularQuinterest.Services
             original.BoardName = board.BoardName;
             original.Description = board.Description;
             original.ImageUrl = board.ImageUrl;
-            //original.User = board.User;
-            //original.UserId = board.UserId;
+            original.User = board.User;
+            original.UserId = board.UserId;
 
             _repo.SaveChanges();
         }
 
+        //[HttpDelete]
         public void Delete(int id)
         {
             _repo.Delete<Board>(id);

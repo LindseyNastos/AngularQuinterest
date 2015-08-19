@@ -3,6 +3,7 @@ using AngularQuinterest.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNet.Identity;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -22,7 +23,8 @@ namespace AngularQuinterest.API
         // GET: api/Boards
         public IEnumerable<Board> Get()
         {
-            return _service.BoardList();
+            var userId = this.User.Identity.GetUserId();
+            return _service.BoardList(userId);
             
         }
 

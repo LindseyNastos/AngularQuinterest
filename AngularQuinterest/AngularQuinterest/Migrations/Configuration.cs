@@ -65,7 +65,6 @@ namespace AngularQuinterest.Migrations
                     BoardName = "Vacations",
                     ImageUrl = "http://wdy.h-cdn.co/assets/cm/15/09/54f0fbd48fba0_-_1-couple-vacation-tropical-lgn.jpg",
                     Description = "Places I want to go",
-                    NumPinsOnBoard = 2,
                     Pins = new Pin[]
                     {
                         new Pin {
@@ -94,7 +93,6 @@ namespace AngularQuinterest.Migrations
                     BoardName = "Animals",
                     ImageUrl = "http://www.stylemotivation.com/wp-content/uploads/2013/07/cute-baby-animals-3.jpg",
                     Description = "Adorable cuddly babies!",
-                    NumPinsOnBoard = 1,
                     Pins = new Pin[]
                     {
                         new Pin {

@@ -35,9 +35,15 @@
 
     angular.module('QuinterestApp').factory('boardService', function ($resource) {
 
+        var User = $resource('/api/user/:id')
+
         var Board = $resource('/api/boards/:id');
 
         var Pins = $resource('/api/user/:id')
+
+        var _profile = function () {
+            return User.get();
+        };
 
         var _boardList = function () {
             return Board.query();
@@ -60,6 +66,7 @@
         };
 
         return {
+            profile: _profile,
             boardList: _boardList,
             save: _save,
             get: _get,
