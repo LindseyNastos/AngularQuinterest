@@ -90,8 +90,6 @@
         var _userRegistration = function (registrationInfo) {
             var register = $resource('api/Account/Register');
             register.save(registrationInfo);
-
-            return 
         };
 
         return {

@@ -270,6 +270,7 @@
                 controllerAs: 'modal'
             }).result.then(function () {
                 self.userProfile();
+                self.getBoards();
             });
         };
 
@@ -279,11 +280,15 @@
                 templateUrl: 'ngViews/modals/createPinModal.html',
                 controller: 'CreatePinModal',
                 controllerAs: 'modal'
+            }).result.then(function () {
+                self.userProfile();
+                self.getBoards();
             });
         };
 
-        self.userProfile();
         self.getBoards();
+        self.userProfile();
+        
     });
 
 
@@ -337,7 +342,7 @@
                 controllerAs: 'modal',
                 resolve: {
                     id: function () {
-                        return id;
+                        return $routeParams.id;
                     }
                 }
             }).result.then(function () {
