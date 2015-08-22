@@ -12,7 +12,7 @@ using System.Security.Claims;
 
 namespace AngularQuinterest.API
 {
-    //[Authorize]
+    [Authorize]
     public class PinsController : ApiController
     {
         private IPinServices _service;

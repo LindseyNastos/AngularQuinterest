@@ -19,6 +19,7 @@
         self.pins = [];
         
         self.userLogin = function () {
+            console.log("loggin in");
             accountService.userLogin(self.login)
                 .success(function (result) {
                     sessionStorage.setItem("access_token", result.access_token);
@@ -33,17 +34,18 @@
         self.register = {};
 
         self.registerUser = function () {
-            accountService.userRegistration(self.register);
-                    var data = {};
-                    data.userName = self.register.email;
-                    data.password = self.register.password;
-                    accountService.userLogin(data)
-                        .success(function (result) {
-                            sessionStorage.setItem("access_token", result.access_token);
-                            $http.defaults.headers.common['Authorization'] = 'bearer ' + sessionStorage.getItem("access_token");
-                            self.getPins();
+            accountService.userRegistration(self.register).$promise.then(function () {
+                var data = {};
+                data.userName = self.register.email;
+                data.password = self.register.password;
+                accountService.userLogin(data)
+                    .success(function (result) {
+                        sessionStorage.setItem("access_token", result.access_token);
+                        $http.defaults.headers.common['Authorization'] = 'bearer ' + sessionStorage.getItem("access_token");
+                        self.getPins();
+                    });
             });
-        };
+            };
 
         self.isLoggedIn = function () {
             return sessionStorage.getItem("access_token");
@@ -249,11 +251,13 @@
     app.controller('BoardIndexController', function ($modal, boardService) {
         var self = this;
 
-        var boards = [];
+        self.boards = [];
 
         //Board List
         self.getBoards = function () {
+            console.log("dss")
             self.boards = boardService.boardList();
+            console.log(self.boards)
         };
 
         var user = {};

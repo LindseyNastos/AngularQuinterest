@@ -1,6 +1,9 @@
 ﻿(function () {
 
-    angular.module('QuinterestApp').factory('pinService', function ($resource) {
+    angular.module('QuinterestApp').factory('pinService', function ($resource, $http) {
+
+        $http.defaults.headers.common['Authorization'] = 'bearer ' + sessionStorage.getItem("access_token");
+
 
         var Pin = $resource('/api/pins/:id');
 
@@ -20,20 +23,19 @@
             return Pin.remove({ id: id });
         };
 
-
-
         return {
             pinList: _pinList,
             save: _save,
             get: _get,
             remove: _remove
         };
-
     });
 
 
 
-    angular.module('QuinterestApp').factory('boardService', function ($resource) {
+    angular.module('QuinterestApp').factory('boardService', function ($resource, $http) {
+
+        $http.defaults.headers.common['Authorization'] = 'bearer ' + sessionStorage.getItem("access_token");
 
         var User = $resource('/api/user/:id')
 
@@ -73,7 +75,6 @@
             remove: _remove,
             getPins: _getPins
         };
-
     });
 
     angular.module('QuinterestApp').factory('accountService', function ($http, $resource) {
@@ -89,15 +90,12 @@
 
         var _userRegistration = function (registrationInfo) {
             var register = $resource('api/Account/Register');
-            register.save(registrationInfo);
+            return register.save(registrationInfo);
         };
 
         return {
             userLogin: _userLogin,
             userRegistration: _userRegistration
         }
-
     });
-
-
 })();
