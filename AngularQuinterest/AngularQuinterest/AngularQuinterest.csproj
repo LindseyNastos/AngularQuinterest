@@ -303,7 +303,7 @@
     <Content Include="ngViews\pins\index.html" />
     <Content Include="ngViews\modals\createPinModal.html" />
     <Content Include="ngViews\pins\pinDetails.html" />
-    <Content Include="ngViews\profile\Profile.html" />
+    <Content Include="ngViews\profile\admin.html" />
     <Content Include="QuinterestApp\app.js" />
     <Content Include="QuinterestApp\controllers.js" />
     <Content Include="QuinterestApp\services.js" />

@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="QuinterestApp">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -22,7 +22,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="/">Pins</a></li>
                     <li><a href="/profile">Profile</a></li>
-
+                    <li><a href="/admin" ng-show="account.isAdmin()">Admin</a></li>
                 </ul>
             </div>
         </div>

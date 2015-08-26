@@ -26,6 +26,11 @@
                 controller: 'RegisterLoginController',
                 controllerAs: 'main'
             })
+            .when('/admin', {
+                templateUrl: 'ngViews/profile/admin.html',
+                controller: 'AdminController',
+                controllerAs: 'main'
+            })
             .otherwise({
                 templateUrl: '/ngViews/notFound.html'
             });

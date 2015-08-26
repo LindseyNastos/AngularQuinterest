@@ -7,28 +7,28 @@
     app.controller('PinIndexController', ['$http', '$resource', '$location', 'pinService', 'accountService', '$modal', function ($http, $resource, $location, pinService, accountService, $modal) {
         var self = this;
 
-        
-
         //Pin List
         self.getPins = function () {
             self.pins = pinService.pinList();
         };
-
-        
 
         self.pins = [];
         
         self.userLogin = function () {
             accountService.userLogin(self.login)
                 .success(function (result) {
+                    self.login = null;
                     sessionStorage.setItem("access_token", result.access_token);
                     $http.defaults.headers.common['Authorization'] = 'bearer ' + sessionStorage.getItem("access_token");
+                    $http.get('/api/admin/isAdmin').success(function (isAdmin) {
+                        sessionStorage.setItem('accessToken', result.access_token);
+                        sessionStorage.setItem('isAdmin', isAdmin);
+                    })
                     self.getPins();
                 }).error(function () {
                 self.loginErrorMessage = "The user name/password is incorrect."
             });
         };
-
 
         self.register = {};
 
@@ -48,12 +48,10 @@
 
         self.isLoggedIn = function () {
             return sessionStorage.getItem("access_token");
-
         };
 
         self.logOut = function () {
             sessionStorage.removeItem("access_token");
-
         };
 
 
@@ -66,8 +64,6 @@
         self.details = function (id) {
             $location.path('/pinDetails/' + id);
         };
-
-        
 
         //Create Pin
         self.showCreateModal = function () {
@@ -93,11 +89,8 @@
                 }
             });
         };
-
         self.getPins();
-
     }]);
-
 
     app.controller('PinDetailsController', ['$location', '$routeParams', 'pinService', '$modal', function ($location, $routeParams, pinService, $modal) {
         var self = this;
@@ -152,7 +145,6 @@
 
     }]);
 
-
     app.controller('PinItModal', ['$modal', 'id', '$routeParams', '$modalInstance', 'pinService', 'boardService', function ($modal, id, $routeParams, $modalInstance, pinService, boardService) {
         var self = this;
 
@@ -161,7 +153,6 @@
 
         //Board List
         self.boards = boardService.boardList();
-
 
         self.getBoards = function () {
             self.boards = boardService.boardList();
@@ -177,7 +168,6 @@
             self.showButton = false;
         };
 
-        
         self.showCreateBoardModal = function () {
             $modal.open({
                 templateUrl: '/ngViews/modals/createBoardModal.html',
@@ -200,15 +190,12 @@
 
     }]);
 
-
     app.controller('CreatePinModal', function ($modalInstance, boardService, pinService) {
         var self = this;
 
         self.boards = boardService.boardList();
 
-
         self.save = function () {
-
             pinService.save(self.pin).$promise.then(function () {
                 $modalInstance.close();
             })
@@ -217,9 +204,7 @@
         self.exit = function () {
             $modalInstance.close();
         };
-
     });
-
 
     app.controller('EditPinModal', function ($modalInstance, boardService, pinService, id) { 
         var self = this;
@@ -233,10 +218,8 @@
                 $modalInstance.close();
             });
         };
-    
     });
         
-
     app.controller('DeletePinModal', function ($modalInstance, pinService, id) {
         var self = this;
 
@@ -252,8 +235,6 @@
 
     });
 
-
-   
     //BOARDS
 
     app.controller('BoardIndexController', function ($modal, boardService) {
@@ -295,12 +276,9 @@
                 self.getBoards();
             });
         };
-
         self.getBoards();
         self.userProfile();
-        
     });
-
 
     app.controller('BoardDetailsController', function ($location, $routeParams, $modal, boardService) {
         var self = this;
@@ -362,7 +340,6 @@
 
     });
 
-
     app.controller('CreateBoardModal', function ($modalInstance, boardService) {
         var self = this;
 
@@ -372,7 +349,6 @@
             });
         };
     });
-
 
     app.controller('EditBoardModal', function ($modalInstance, id, boardService) {
         var self = this;
@@ -386,7 +362,6 @@
         };
     });
 
-
     app.controller('DeleteBoardModal', function ($modalInstance, boardService, id) {
         var self = this;
 
@@ -399,8 +374,10 @@
         self.exit = function () {
             $modalInstance.dismiss();
         };
-
     });
 
+    app.controller('AdminController', function (accountService) {
+
+    });
 
 })();
