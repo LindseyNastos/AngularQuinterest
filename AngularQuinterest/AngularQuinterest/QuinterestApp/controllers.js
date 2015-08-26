@@ -19,7 +19,6 @@
         self.pins = [];
         
         self.userLogin = function () {
-            console.log("loggin in");
             accountService.userLogin(self.login)
                 .success(function (result) {
                     sessionStorage.setItem("access_token", result.access_token);
@@ -166,7 +165,16 @@
 
         self.getBoards = function () {
             self.boards = boardService.boardList();
+        };
 
+        self.showButton = false;
+
+        self.isHover = function () {
+            self.showButton = true;
+        };
+
+        self.noHover = function () {
+            self.showButton = false;
         };
 
         
@@ -255,9 +263,7 @@
 
         //Board List
         self.getBoards = function () {
-            console.log("dss")
             self.boards = boardService.boardList();
-            console.log(self.boards)
         };
 
         var user = {};

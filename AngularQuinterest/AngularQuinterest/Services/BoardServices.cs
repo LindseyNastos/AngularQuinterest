@@ -29,9 +29,15 @@ namespace AngularQuinterest.Services
 
         
 
-        public void Create(Board board)
+        public void Create(Board board, string userId)
         {
-            _repo.Add<Board>(board);
+            var originalUser = _repo.Query<ApplicationUser>()
+                .Where(u => u.Id == userId)
+                .Include(u => u.Boards)
+                .FirstOrDefault();
+
+            board.UserId = userId;
+            originalUser.Boards.Add(board);
             _repo.SaveChanges();
         }
 

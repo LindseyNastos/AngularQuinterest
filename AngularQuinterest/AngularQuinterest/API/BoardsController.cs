@@ -43,7 +43,9 @@ namespace AngularQuinterest.API
             if (ModelState.IsValid) {
                 if (board.Id == 0)
                 {
-                    _service.Create(board);
+                    var userId = this.User.Identity.GetUserId();
+                    board.UserId = userId;
+                    _service.Create(board, userId);
                     return Request.CreateResponse(HttpStatusCode.Created, board);
                 }
                 else {
