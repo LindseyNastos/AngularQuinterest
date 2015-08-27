@@ -60,14 +60,6 @@ namespace AngularQuinterest.API
 
                     return Request.CreateResponse(HttpStatusCode.Created, pin);
                 }
-
-                //else if (pin.UserId == userId)
-                //{
-                //    _service.PinIt(pin, userId);
-
-                //    return Request.CreateResponse(HttpStatusCode.Created, pin);
-                //}
-
                 else
                 {
                     _service.Edit(pin.Id, pin);
@@ -76,6 +68,8 @@ namespace AngularQuinterest.API
             }
             return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
         }
+
+        
 
         // PUT: api/Pins/5
         public void Put(int id, [FromBody]string value)

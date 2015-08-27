@@ -69,12 +69,11 @@ namespace AngularQuinterest.Services
         }
 
 
-        public void PinIt(Pin pin, string userId, int boardId)
+        public Pin PinIt(Pin pin, string userId, int boardId)
         {
             var newPin = new Pin
             {
                 Title = pin.Title,
-                Board = pin.Board,
                 BoardId = pin.BoardId,
                 ImageUrl = pin.ImageUrl,
                 Website = pin.Website,
@@ -86,6 +85,8 @@ namespace AngularQuinterest.Services
             _repo.Add<Pin>(pin);
             _repo.SaveChanges();
             this.UpdatePinCount(boardId);
+
+            return newPin;
 
         }
 

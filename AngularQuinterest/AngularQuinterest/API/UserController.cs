@@ -13,29 +13,35 @@ namespace AngularQuinterest.API
     public class UserController : ApiController
     {
 
-        private IUserServices _service;
+        private IUserServices _userService;
+        private IPinServices _pinService;
 
-        public UserController(IUserServices service)
+        public UserController(IUserServices userService, IPinServices pinService)
         {
-            _service = service;
+            _userService = userService;
+            _pinService = pinService;
         }
 
         // GET: api/User
         public ApplicationUser Get()
         {
             var id = this.User.Identity.GetUserId();
-            return _service.Profile(id);
+            return _userService.Profile(id);
         }
 
         // GET: api/User/5
         public IList<Pin> Get(int id)
         {
-            return _service.PinsOnBoard(id);
+            return _userService.PinsOnBoard(id);
         }
 
-        // POST: api/User
-        public void Post([FromBody]string value)
+        public HttpResponseMessage Post(int pinId, int boardId)
         {
+            var userId = this.User.Identity.GetUserId();
+            var pin = _pinService.FindPin(pinId);
+            var newPin = _pinService.PinIt(pin, userId, boardId);
+
+            return Request.CreateResponse(HttpStatusCode.Created, newPin);
         }
 
         // PUT: api/User/5

@@ -15,11 +15,14 @@
             </h3>
             <hr />
             <ul class="modalList">
-                <li ng-mouseover="modal.isHover()" ng-mouseleave="modal.noHover()" class="modalBoardList" ng-repeat="board in modal.boards">
-                    <img class="boardListImage" ng-src="{{board.imageUrl}}" />
-                    <strong>{{board.boardName}}</strong>
-                    <button class="btn btn-sm btn-success pinItButtons" ng-show="modal.showButton" ng-click="modal.pinIt()">Pin it</button>
+                <li class="modalBoardList" ng-repeat="board in modal.boards">
+                    <div ng-mouseover ="modal.isHover(board.id)" ng-mouseleave="modal.noHover(board.id)">
+                        <img class="boardListImage" ng-src="{{board.imageUrl}}" />
+                        <strong>{{board.boardName}}</strong>
+                        <button class="btn btn-sm btn-success pinItButtons" ng-show="modal.showButton" ng-click="modal.pinIt(modal.pin.id, board.id)">Pin it</button>
+                    </div>
                 </li>
+                <li></li>
                 <li>
                     <button class="btn btn-sm btn-warning pinItButtons" ng-click="modal.showCreateBoardModal()">Create New Board</button>
                 </li>

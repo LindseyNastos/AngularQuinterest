@@ -154,7 +154,9 @@
 
     }]);
 
-    app.controller('PinItModal', ['$modal', 'id', '$routeParams', '$modalInstance', 'pinService', 'boardService', function ($modal, id, $routeParams, $modalInstance, pinService, boardService) {
+    app.controller('PinItModal', ['$modal', 'id', '$routeParams', '$modalInstance', 'pinService', 'boardService',
+        function ($modal, id, $routeParams, $modalInstance, pinService, boardService) {
+
         var self = this;
 
         //Get Pin
@@ -169,11 +171,11 @@
 
         self.showButton = false;
 
-        self.isHover = function () {
+        self.isHover = function (id) {
             self.showButton = true;
         };
 
-        self.noHover = function () {
+        self.noHover = function (id) {
             self.showButton = false;
         };
 
@@ -187,11 +189,11 @@
             });
         };
 
-        //self.clone = function (id) {
-        //    pinService.save(self.pin).$promise.then(function () {
-        //        $modalInstance.close();
-        //    })
-        //};
+        self.pinIt = function (pinId, boardId) {
+            pinService.clone(pinId, boardId).$promise.then(function () {
+                $modalInstance.close();
+            })
+        };
 
         self.exit = function () {
             $modalInstance.dismiss();

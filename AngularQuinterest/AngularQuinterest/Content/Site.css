@@ -18,7 +18,7 @@ textarea {
 }
 
 .smallPinImage {
-    max-height:175px;
+    max-height:150px;
     max-width:100%;
 }
 
@@ -85,7 +85,7 @@ textarea {
 }
 
 .modalBoardList:hover {
-    background:rgba(149, 165, 166, 0.15);
+    background:#F4F3F4;
 }
 
 .pinItButtons {
@@ -157,4 +157,33 @@ h1, .localLink, h4 {
 .modalBoardImage {
     max-width:100%;
     max-height:125px;
+}
+
+.navbar-inverse {
+    background-color: #917394;
+    border-color: #917394;
+}
+
+.navbar-inverse .navbar-brand {
+    color:white;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+}
+
+.panel-default > .panel-heading {
+    color: #333333;
+    background-color: #D3CBD4;
+    border-color: #C7B7C7;
+}
+
+.btn-success {
+    background-color:#917394;
+    border-color:#917394;
+}
+
+.btn-success:hover {
+    background-color:#7B517F;
+    border-color:#7B517F;
 }
