@@ -56,7 +56,7 @@ namespace AngularQuinterest.API
             {
                 if (pin.Id == 0)
                 {
-                    _service.Create(pin);
+                    _service.Create(pin, userId);
 
                     return Request.CreateResponse(HttpStatusCode.Created, pin);
                 }

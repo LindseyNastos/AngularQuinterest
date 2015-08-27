@@ -59,8 +59,9 @@ namespace AngularQuinterest.Services
         }
 
 
-        public void Create(Pin pin)
+        public void Create(Pin pin, string userId)
         {
+            pin.UserId = userId;
             _repo.Add<Pin>(pin);
             _repo.SaveChanges();
             var boardId = pin.BoardId;
@@ -79,16 +80,11 @@ namespace AngularQuinterest.Services
                 Website = pin.Website,
                 ShortDescription = pin.ShortDescription,
                 LongDescription = pin.LongDescription,
-                //UserId = userId
+                UserId = userId
             };
 
-            //var originalUser = this.FindUser(userId);
-            //originalUser.Pins.Add(newPin);
-            //temp:
             _repo.Add<Pin>(pin);
-
             _repo.SaveChanges();
-
             this.UpdatePinCount(boardId);
 
         }
@@ -103,8 +99,7 @@ namespace AngularQuinterest.Services
             original.LongDescription = pin.LongDescription;
             original.ShortDescription = pin.ShortDescription;
             original.Title = pin.Title;
-            //original.User = pin.User;
-            //original.UserId = pin.UserId;
+            original.UserId = pin.UserId;
             original.Website = pin.Website;
 
             _repo.SaveChanges();

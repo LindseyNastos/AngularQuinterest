@@ -3,7 +3,7 @@ namespace AngularQuinterest.Services
 {
     public interface IPinServices
     {
-        void Create(AngularQuinterest.Models.Pin pin);
+        void Create(AngularQuinterest.Models.Pin pin, string userId);
         void Delete(int id);
         void Edit(int id, AngularQuinterest.Models.Pin pin);
         AngularQuinterest.Models.Pin FindPin(int pinId);
