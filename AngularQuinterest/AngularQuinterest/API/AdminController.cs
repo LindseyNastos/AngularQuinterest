@@ -1,23 +1,40 @@
-﻿using System;
+﻿using AngularQuinterest.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using Microsoft.AspNet.Identity;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Web.Http;
+using AngularQuinterest.Services;
 
 namespace AngularQuinterest.API
 {
     public class AdminController : ApiController
     {
+        private IAdminServices _service;
+
+        public AdminController(IAdminServices service)
+        {
+            _service = service;
+        }
+
         [Authorize]
         [HttpGet]
         [Route("api/admin/isAdmin")]
         // GET: api/Admin
-        public bool IsAdmin()
+        public IHttpActionResult IsAdmin()
         {
-            var user = this.User as ClaimsPrincipal;
-            return user.HasClaim("IsAdmin", "true");
+            var claim = this.User as ClaimsPrincipal;
+            var userId = this.User.Identity.GetUserId();
+
+            var usersAndPerms = new UsersAndPermissions
+            {
+                DisplayName = _service.GetUser(userId).DisplayName,
+                UserClaim = claim.HasClaim("IsAdmin", "true")
+            };
+            return Ok(usersAndPerms);
         }
 
         // GET: api/Admin/5

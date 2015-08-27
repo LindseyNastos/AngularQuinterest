@@ -1,8 +1,12 @@
 ﻿<html xmlns="http://www.w3.org/1999/xhtml" ng-app="QuinterestApp">
 <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
     <title>Quinterest</title>
     <base href="/" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
     <style>
         [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
             display: none !important;
@@ -15,14 +19,37 @@
             color: firebrick;
         }
     </style>
-
 </head>
 <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Quinterest", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Pins</a></li>
+                    <li ng-controller="PinIndexController as main"><a href="/profile" ng-show="main.isLoggedIn()">Profile</a></li>
+                    <li ng-controller="AdminController as main"><a href="/admin" ng-show="main.isAdmin()">Admin</a></li>
+                    <li ng-controller="PinIndexController as main"><a href="/" ng-click="main.logOut()" ng-show="main.isLoggedIn()">Log Out</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
 
-    <ng-view></ng-view>
+        <ng-view></ng-view>
 
-
-
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Quinterest</p>
+        </footer>
+    </div>
 
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>

@@ -228,7 +228,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Helpers.cs" />
+    <Compile Include="Helpers\UsersAndPermissions.cs" />
     <Compile Include="Infrastructure\GenericRepository.cs" />
+    <Compile Include="Migrations\201508262358110_pinBoard.cs" />
+    <Compile Include="Migrations\201508262358110_pinBoard.Designer.cs">
+      <DependentUpon>201508262358110_pinBoard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -240,7 +245,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
+    <Compile Include="Services\AdminServices.cs" />
     <Compile Include="Services\BoardServices.cs" />
+    <Compile Include="Services\IAdminServices.cs" />
     <Compile Include="Services\IBoardServices.cs" />
     <Compile Include="Services\IPinServices.cs" />
     <Compile Include="Services\IUserServices.cs" />
@@ -373,10 +380,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
@@ -388,6 +393,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201508262358110_pinBoard.resx">
+      <DependentUpon>201508262358110_pinBoard.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

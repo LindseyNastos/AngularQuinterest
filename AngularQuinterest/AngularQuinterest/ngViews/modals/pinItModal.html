@@ -8,9 +8,7 @@
             {{modal.pin.shortDescription}}
     </div>
 
-
     <div>
-
         <div class="col-sm-6">
             <h3>
                 Pick a board
@@ -20,14 +18,13 @@
                 <li ng-mouseover="modal.isHover()" ng-mouseleave="modal.noHover()" class="modalBoardList" ng-repeat="board in modal.boards">
                     <img class="boardListImage" ng-src="{{board.imageUrl}}" />
                     <strong>{{board.boardName}}</strong>
-                    <button class="btn btn-sm btn-success pinItButtons" ng-show="main.showButton" ng-click="modal.pinIt()">Pin it</button>
+                    <button class="btn btn-sm btn-success pinItButtons" ng-show="modal.showButton" ng-click="modal.pinIt()">Pin it</button>
                 </li>
                 <li>
                     <button class="btn btn-sm btn-warning pinItButtons" ng-click="modal.showCreateBoardModal()">Create New Board</button>
                 </li>
             </ul>
         </div>
-
     </div>
 </div>
 

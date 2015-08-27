@@ -1,10 +1,13 @@
 ﻿(function () {
-
+    
     var app = angular.module('QuinterestApp');
 
     //PINS
 
     app.controller('PinIndexController', ['$http', '$resource', '$location', 'pinService', 'accountService', '$modal', function ($http, $resource, $location, pinService, accountService, $modal) {
+
+
+
         var self = this;
 
         //Pin List
@@ -13,6 +16,8 @@
         };
 
         self.pins = [];
+
+        self.displayName = accountService.getUserInfo();
         
         self.userLogin = function () {
             accountService.userLogin(self.login)
@@ -20,13 +25,17 @@
                     self.login = null;
                     sessionStorage.setItem("access_token", result.access_token);
                     $http.defaults.headers.common['Authorization'] = 'bearer ' + sessionStorage.getItem("access_token");
-                    $http.get('/api/admin/isAdmin').success(function (isAdmin) {
+                    $http.get('/api/admin/isAdmin').success(function (data) {
                         sessionStorage.setItem('accessToken', result.access_token);
-                        sessionStorage.setItem('isAdmin', isAdmin);
-                    })
+                        sessionStorage.setItem('isAdmin', data.userClaim);
+                        accountService.setUserInfo(data.displayName);
+                        self.displayName = accountService.getUserInfo();
+                    }).error(function (data) {
+                        alert(data);
+                    });
                     self.getPins();
                 }).error(function () {
-                self.loginErrorMessage = "The user name/password is incorrect."
+                    self.loginErrorMessage = "The user name/password is incorrect.";
             });
         };
 
@@ -377,7 +386,11 @@
     });
 
     app.controller('AdminController', function (accountService) {
+        var self = this;
 
+        self.isAdmin = function () {
+            return sessionStorage.getItem('isAdmin') === 'true';
+        };
     });
 
 })();

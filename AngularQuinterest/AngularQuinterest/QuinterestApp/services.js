@@ -79,6 +79,16 @@
 
     angular.module('QuinterestApp').factory('accountService', function ($http, $resource) {
 
+        var _userInfo = {};
+
+        var _setUserInfo = function (obj) {
+            _userInfo = obj;
+        };
+
+        var _getUserInfo = function () {
+            return _userInfo;
+        };
+
         var _userLogin = function (login) {
             var data = "grant_type=password&username=" + login.userName + "&password=" + login.password;
 
@@ -95,7 +105,9 @@
 
         return {
             userLogin: _userLogin,
-            userRegistration: _userRegistration
+            userRegistration: _userRegistration,
+            getUserInfo: _getUserInfo,
+            setUserInfo: _setUserInfo
         }
     });
 })();

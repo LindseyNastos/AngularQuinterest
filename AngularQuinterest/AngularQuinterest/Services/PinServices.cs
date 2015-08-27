@@ -98,7 +98,6 @@ namespace AngularQuinterest.Services
         {
             var original = this.FindPin(id);
             var originalBoardId = original.BoardId;
-            original.Board = pin.Board;
             original.BoardId = pin.BoardId;
             original.ImageUrl = pin.ImageUrl;
             original.LongDescription = pin.LongDescription;
