@@ -1,32 +1,34 @@
-﻿<h1>{{main.board.boardName}} Board</h1>
-<p class="localLink">
-    {{main.board.numPinsOnBoard}} Pins
-    <br />
-    {{main.board.description}}
-</p>
-<p>
-    <button ng-click="main.showCreatePinModal()"><i class="fa fa-plus"></i> Create Pin</button>
-    <button ng-click="main.showEditBoardModal()"><i class="fa fa-pencil"></i> Edit Board</button>
-    <button ng-click="main.showRemoveBoardModal()"><i class="fa fa-trash-o"></i> Delete Board</button>
-</p>
+﻿<div class="container">
+    <h1>{{main.board.boardName}} Board</h1>
+    <p class="localLink">
+        {{main.board.numPinsOnBoard}} Pins
+        <br />
+        {{main.board.description}}
+    </p>
+    <p>
+        <button ng-click="main.showCreatePinModal()"><i class="fa fa-plus"></i> Create Pin</button>
+        <button ng-click="main.showEditBoardModal()"><i class="fa fa-pencil"></i> Edit Board</button>
+        <button ng-click="main.showRemoveBoardModal()"><i class="fa fa-trash-o"></i> Delete Board</button>
+    </p>
 
-<div class="section">
-    <div class="row">
-        <div class="col-md-3" ng-repeat="pin in main.pins">
-            <div class="panel pins panel-default">
-                <div class="panel-heading">
-                    {{pin.title}}
-                </div>
-                <div class="panel-body">
-                    <img class="smallPinImage img-responsive" ng-src="{{pin.imageUrl}}" />
-                    <hr />
-                    <p>{{pin.shortDescription}}</p>
-                    <button class="btn-danger" ng-click="main.pinItModal(pin.id)"><i class="fa fa-thumb-tack"></i> Pin It</button>
-                    <button ng-click="main.details(pin.id)"><i class="fa fa-search-plus"></i> Details</button>
+    <div class="section">
+        <div class="row">
+            <div class="col-md-3" ng-repeat="pin in main.pins">
+                <div class="panel pins panel-default">
+                    <div class="panel-heading">
+                        {{pin.title}}
+                    </div>
+                    <div class="panel-body">
+                        <img class="smallPinImage img-responsive" ng-src="{{pin.imageUrl}}" />
+                        <hr />
+                        <p>{{pin.shortDescription}}</p>
+                        <button class="btn-danger" ng-click="main.pinItModal(pin.id)"><i class="fa fa-thumb-tack"></i> Pin It</button>
+                        <button ng-click="main.details(pin.id)"><i class="fa fa-search-plus"></i> Details</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+
 </div>
-
-

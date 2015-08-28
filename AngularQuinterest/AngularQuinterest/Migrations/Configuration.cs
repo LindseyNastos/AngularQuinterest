@@ -4,6 +4,7 @@ namespace AngularQuinterest.Migrations
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using System;
+    using System.Configuration;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -119,19 +120,21 @@ namespace AngularQuinterest.Migrations
 
             context.Boards.AddOrUpdate(c => c.BoardName, boards);
 
+            var adminEmail = ConfigurationManager.AppSettings["adminEmail"];
+            var adminPassword = ConfigurationManager.AppSettings["adminPassword"];
 
             var userStore = new UserStore<ApplicationUser>(context);
             var userManager = new ApplicationUserManager(userStore);
 
-            var user = userManager.FindByName("Lindsey@gmail.com");
+            var user = userManager.FindByName(adminEmail);
             if (user == null)
             {
                 user = new ApplicationUser
                 {
-                    UserName = "Lindsey@gmail.com",
-                    Email = "Lindsey@gmail.com"
+                    UserName = adminEmail,
+                    Email = adminEmail
                 };
-                userManager.Create(user, "Secret123!");
+                userManager.Create(user, adminPassword);
 
                 userManager.AddClaim(user.Id, new Claim("IsAdmin", "true"));
 

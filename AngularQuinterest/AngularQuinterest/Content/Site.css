@@ -7,8 +7,7 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    /*padding-left: 0px;*/
-    /*padding-right: 0px;*/
+
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -36,17 +35,16 @@ textarea {
     border-radius: 10px;
 }
 
-    .smallPinDiv h4 {
-        color: #2c3e50;
-    }
+.smallPinDiv h4 {
+    color: #2c3e50;
+}
 
-    .smallPinDiv p {
-        color: #2c3e50;
-    }
+.smallPinDiv p {
+    color: #2c3e50;
+}
 
 .expandedPinImage {
     width: 600px;
-    /*min-height:400px;*/
     padding: 10px;
     border: 2px solid #2c3e50;
     position: relative;
@@ -94,10 +92,6 @@ textarea {
 .noDecoHover:hover {
     text-decoration: none;
 }
-
-/*body {
-    background-image: url('bokeh1.jpg');
-}*/
 
 h1, .localLink, h4 {
     color: #222222;
@@ -192,42 +186,17 @@ h1, .localLink, h4 {
     background-size: 200% 200%;
     height: 100%;
     width: 100%;
-    /*-webkit-animation: collagePan 40s;*/
 }
-
-/*#loginDiv {
-    background-color: #7B517F;
-    border-radius: 10px;
-    margin-top:5%;
-    color:#333333;
-    box-shadow: 20px 20px 10px #333333;
-    width: 600px;
-}*/
-
-/*@-webkit-keyframes collagePan {
-    from {
-        top:0px;
-        left:0px;
-    }
-
-    to {
-        transform: translate(-500px, -500px)
-    }
-}*/
 
 @import "bourbon";
 
 .background {
   height: 150%;
   width: 150%;
-  
-  /*min-width: 750px;
-  min-height: 1800px;*/
 }
 
 .background-image {
   z-index: 0;
-
 }
 
 .center {
@@ -242,7 +211,7 @@ h1, .localLink, h4 {
     overflow: hidden;
     position: fixed;
     top: 10%;
-    /*left: 50%;*/
+    left: 50%;
     background: #7B517F;
     border-radius: 10px;
     margin-top:5%;
@@ -254,8 +223,6 @@ h1, .localLink, h4 {
 .background {
     background-image: url('MagazineCollage.jpg');
     background-size: 100% 100%;
-    /*height: 100%;
-    width: 100%;*/
 }
 
 .animate-bg {
@@ -273,3 +240,4 @@ h1, .localLink, h4 {
     position: absolute;
     bottom: 40px;
 }
+
