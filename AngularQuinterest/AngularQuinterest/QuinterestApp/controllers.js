@@ -4,9 +4,7 @@
 
     //PINS
 
-    app.controller('PinIndexController', ['$http', '$resource', '$location', 'pinService', 'accountService', '$modal', function ($http, $resource, $location, pinService, accountService, $modal) {
-
-
+    app.controller('PinIndexController', ['angularSpinner', '$http', '$resource', '$location', 'pinService', 'accountService', '$modal', function (angularSpinner, $http, $resource, $location, pinService, accountService, $modal) {
 
         var self = this;
 
@@ -62,7 +60,6 @@
         self.logOut = function () {
             sessionStorage.removeItem("access_token");
         };
-
 
         //Profile Button
         self.profile = function () {
