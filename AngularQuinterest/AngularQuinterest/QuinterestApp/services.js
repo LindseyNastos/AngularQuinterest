@@ -7,7 +7,11 @@
 
         var Pin = $resource('/api/pins/:id');
 
-        var PinIt = $resource('/api/user/:id');
+        //var PinIt = $resource('/api/user/post?pinId=' + pinId + '&boardId=' + boardId);
+
+        //var PinIt = $resource('/api/user/post?pinId=pinId&boardId=boardId');
+
+        var PinIt = $resource('/api/user/post/:id');
 
         var _pinList = function () {
             return Pin.query();
@@ -26,7 +30,7 @@
         };
 
         var _clone = function (pinId, boardId) {
-            return PinIt.save({ pinId: pinId }, { boardId: boardId })
+            return PinIt.save({ pinId: pinId, boardId: boardId })
         };
 
         return {

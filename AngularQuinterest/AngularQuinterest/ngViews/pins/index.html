@@ -1,8 +1,75 @@
-﻿<div ng-if="!main.isLoggedIn()">
-        <div class="row">
-            <div class="col-sm-2"></div>
-                <div class="col-sm-4">
-                    <h2>Log In.</h2>
+﻿<div id="loginBackground" ng-if="!main.isLoggedIn()">
+    <div class="background-image">
+        <div class="background animate-bg"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <div id="loginModal">
+                <div class="modal modal-dialog">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2 style="color:floralwhite">Log In.</h2>
+                            {{main.loginErrorMessage}}
+                            <form ng-submit="main.userLogin()">
+                                <div>
+                                    <label>Email:</label>
+                                    <input class="form-control" ng-model="main.login.userName" type="text" />
+                                </div>
+                                <div>
+                                    <label>Password:</label>
+                                    <input class="form-control" ng-model="main.login.password" type="password" />
+                                </div>
+                                <div>
+                                    <input style="margin-top:5px" type="submit" value="Log In" />
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-6">
+                            <h2 style="color:floralwhite">Register.</h2>
+                            <form name="userRegistration" ng-submit="main.userRegister()" novalidate>
+                                <div>
+                                    <label>Username:</label>
+                                    <input class="form-control" name="displayName" ng-model="main.register.displayName" type="text" required />
+                                </div>
+                                <span ng-show="userRegistration.displayName.$dirty&&userRegistration.displayName.$error.required" class="error">*required</span>
+
+                                <div>
+                                    <label>Email:</label>
+                                    <input class="form-control" name="email" ng-model="main.register.email" type="text" required />
+                                </div>
+                                <span ng-show="userRegistration.email.$dirty&&userRegistration.email.$error.required" class="error">*required</span>
+
+                                <div>
+                                    <label>Password:</label>
+                                    <input class="form-control" name="password" ng-model="main.register.password" type="password" required />
+                                </div>
+                                <span ng-show="userRegistration.password.$dirty&&userRegistration.password.$error.required" class="error">*required</span>
+
+                                <div>
+                                    <label>Confirm Password:</label>
+                                    <input class="form-control" name="confirmPassword" ng-model="main.register.confirmPassword" type="password" required />
+                                </div>
+                                <span ng-show="userRegistration.confirmPassword.$dirty&&userRegistration.confirmPassword.$error.required" class="error">*required</span>
+
+                                <div>
+                                    <input style="margin-top:5px" type="submit" value="Register" ng-click="main.registerUser()" ng-disabled="userRegistration.$invalid" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+
+    <div id="loginModal">
+        <div class="modal modal-dialog">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2 style="color:floralwhite">Log In.</h2>
                     {{main.loginErrorMessage}}
                     <form ng-submit="main.userLogin()">
                         <div>
@@ -18,9 +85,8 @@
                         </div>
                     </form>
                 </div>
-
-                <div class="col-sm-4">
-                    <h2>Register.</h2>
+                <div class="col-sm-6">
+                    <h2 style="color:floralwhite">Register.</h2>
                     <form name="userRegistration" ng-submit="main.userRegister()" novalidate>
                         <div>
                             <label>Username:</label>
@@ -50,14 +116,78 @@
                             <input style="margin-top:5px" type="submit" value="Register" ng-click="main.registerUser()" ng-disabled="userRegistration.$invalid" />
                         </div>
                     </form>
+                </div>
             </div>
-            <div class="col-sm-2"></div>
         </div>
+    </div>
+    </div>
+    <!--<div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-4"></div>
+                        <div class="col-sm-4" id="loginDiv">
+                            <div class="col-sm-6">
+                                <h2 style="color:floralwhite">Log In.</h2>
+                                {{main.loginErrorMessage}}
+                                <form ng-submit="main.userLogin()">
+                                    <div>
+                                        <label>Email:</label>
+                                        <input class="form-control" ng-model="main.login.userName" type="text" />
+                                    </div>
+                                    <div>
+                                        <label>Password:</label>
+                                        <input class="form-control" ng-model="main.login.password" type="password" />
+                                    </div>
+                                    <div>
+                                        <input style="margin-top:5px" type="submit" value="Log In" />
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-sm-6">
+                                <h2 style="color:floralwhite">Register.</h2>
+                                <form name="userRegistration" ng-submit="main.userRegister()" novalidate>
+                                    <div>
+                                        <label>Username:</label>
+                                        <input class="form-control" name="displayName" ng-model="main.register.displayName" type="text" required />
+                                    </div>
+                                    <span ng-show="userRegistration.displayName.$dirty&&userRegistration.displayName.$error.required" class="error">*required</span>
 
+                                    <div>
+                                        <label>Email:</label>
+                                        <input class="form-control" name="email" ng-model="main.register.email" type="text" required />
+                                    </div>
+                                    <span ng-show="userRegistration.email.$dirty&&userRegistration.email.$error.required" class="error">*required</span>
+
+                                    <div>
+                                        <label>Password:</label>
+                                        <input class="form-control" name="password" ng-model="main.register.password" type="password" required />
+                                    </div>
+                                    <span ng-show="userRegistration.password.$dirty&&userRegistration.password.$error.required" class="error">*required</span>
+
+                                    <div>
+                                        <label>Confirm Password:</label>
+                                        <input class="form-control" name="confirmPassword" ng-model="main.register.confirmPassword" type="password" required />
+                                    </div>
+                                    <span ng-show="userRegistration.confirmPassword.$dirty&&userRegistration.confirmPassword.$error.required" class="error">*required</span>
+
+                                    <div>
+                                        <input style="margin-top:5px" type="submit" value="Register" ng-click="main.registerUser()" ng-disabled="userRegistration.$invalid" />
+                                    </div>
+                                </form>
+                        </div>
+                    </div>
+                    <div class="col-sm-4"></div>
+                </div>
+            </div>
+        </div>
+    </div>-->
     </div>
 
 
-    <div ng-if="main.isLoggedIn()">
+
+
+    <div class="container" ng-if="main.isLoggedIn()">
 
         <h1>All Pins</h1>
         <p>
@@ -84,8 +214,10 @@
                             <img class="smallPinImage img-responsive" ng-src="{{pin.imageUrl}}" />
                             <hr />
                             <p>{{pin.shortDescription}}</p>
-                            <button class="btn-danger" ng-click="main.showPinItModal(pin.id)"><i class="fa fa-thumb-tack"></i> Pin It</button>
-                            <button ng-click="main.details(pin.id)"><i class="fa fa-search-plus"></i> Details</button>
+                            <div class="pinDivButtons">
+                                <button class="btn-danger" ng-click="main.showPinItModal(pin.id)"><i class="fa fa-thumb-tack"></i> Pin It</button>
+                                <button ng-click="main.details(pin.id)"><i class="fa fa-search-plus"></i> Details</button>
+                            </div>
                         </div>
                     </div>
                 </div>

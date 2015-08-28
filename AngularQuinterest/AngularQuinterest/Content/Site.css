@@ -1,13 +1,14 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background: url('bokeh1.jpg') no-repeat fixed 100%;
+    background: url('bokeh1.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    /*padding-left: 0px;*/
+    /*padding-right: 0px;*/
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -18,30 +19,30 @@ textarea {
 }
 
 .smallPinImage {
-    max-height:150px;
-    max-width:100%;
+    max-height: 150px;
+    max-width: 100%;
 }
 
 .mediumPinImage {
-    max-height:100%;
-    max-width:100%;
+    max-height: 100%;
+    max-width: 100%;
 }
 
 .smallPinDiv {
-    height:240px;
-    background-color:white;
-    padding:5px;
+    height: 240px;
+    background-color: white;
+    padding: 5px;
     border: 2px solid #222;
     border-radius: 10px;
 }
 
-.smallPinDiv h4 {
-    color:#2c3e50;
-}
+    .smallPinDiv h4 {
+        color: #2c3e50;
+    }
 
-.smallPinDiv p {
-    color:#2c3e50;    
-}
+    .smallPinDiv p {
+        color: #2c3e50;
+    }
 
 .expandedPinImage {
     width: 600px;
@@ -50,50 +51,48 @@ textarea {
     border: 2px solid #2c3e50;
     position: relative;
     top: 25px;
-
 }
 
 .crudForms {
-    position:relative;
+    position: relative;
     top: 25px;
 }
 
 .boardListImage {
-    height:40px;
-    width:40px;
-    margin-right:10px;
-    margin-bottom:4px;
-    border-radius:4px;
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+    margin-bottom: 4px;
+    border-radius: 4px;
 }
 
 .modalLeftSide {
-    background-color:rgba(149, 165, 166, 0.15);
+    background-color: rgba(149, 165, 166, 0.15);
 }
 
 .modalList {
-    list-style:none;
+    list-style: none;
 }
 
 .createBoard {
-    border:2px solid firebrick;
-    border-radius:4px;
-
+    border: 2px solid firebrick;
+    border-radius: 4px;
 }
 
 .modalExit {
-    float:right;
+    float: right;
 }
 
 .modalBoardList:hover {
-    background:#F4F3F4;
+    background: #F4F3F4;
 }
 
 .pinItButtons {
-    float:right;
+    float: right;
 }
 
 .noDecoHover:hover {
-    text-decoration:none;
+    text-decoration: none;
 }
 
 /*body {
@@ -101,62 +100,62 @@ textarea {
 }*/
 
 h1, .localLink, h4 {
-    color:#222222;
+    color: #222222;
 }
 
 .white {
-    color:#E1E1E1;
+    color: #E1E1E1;
 }
 
 .loginForm {
-    top:12px;
-    position:relative;
+    top: 12px;
+    position: relative;
 }
 
-.nav, .pagination, .carousel, .panel-title a { 
-    cursor: pointer; 
+.nav, .pagination, .carousel, .panel-title a {
+    cursor: pointer;
 }
 
 .pins {
-    height:360px;
+    height: 360px;
 }
 
 .boards {
-    height:450px;
+    height: 450px;
 }
 
 .tinyPinDiv {
-    height:72px;
-    width:72px;
-    margin:1px;
-    display:inline;
-    border-radius:4px;
+    height: 72px;
+    width: 72px;
+    margin: 1px;
+    display: inline;
+    border-radius: 4px;
 }
 
 .mainBoardImages {
-    max-height:225px;
+    max-height: 225px;
 }
 
 .createPinModalPanel {
-    width:200px;
-    height:400px;
-    margin-top:30px;
+    width: 200px;
+    height: 400px;
+    margin-top: 30px;
 }
 
 .modalPinImage {
-    max-width:100%;
-    max-height:250px;
+    max-width: 100%;
+    max-height: 250px;
 }
 
 .createBoardModalPanel {
-    width:200px;
-    height:250px;
-    margin-top:20px;
+    width: 200px;
+    height: 250px;
+    margin-top: 20px;
 }
 
 .modalBoardImage {
-    max-width:100%;
-    max-height:125px;
+    max-width: 100%;
+    max-height: 125px;
 }
 
 .navbar-inverse {
@@ -165,7 +164,7 @@ h1, .localLink, h4 {
 }
 
 .navbar-inverse .navbar-brand {
-    color:white;
+    color: white;
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -179,11 +178,98 @@ h1, .localLink, h4 {
 }
 
 .btn-success {
-    background-color:#917394;
-    border-color:#917394;
+    background-color: #917394;
+    border-color: #917394;
 }
 
 .btn-success:hover {
-    background-color:#7B517F;
-    border-color:#7B517F;
+    background-color: #7B517F;
+    border-color: #7B517F;
+}
+
+#loginBackground {
+    background: url('MagazineCollage.jpg') no-repeat fixed;
+    background-size: 200% 200%;
+    height: 100%;
+    width: 100%;
+    /*-webkit-animation: collagePan 40s;*/
+}
+
+/*#loginDiv {
+    background-color: #7B517F;
+    border-radius: 10px;
+    margin-top:5%;
+    color:#333333;
+    box-shadow: 20px 20px 10px #333333;
+    width: 600px;
+}*/
+
+/*@-webkit-keyframes collagePan {
+    from {
+        top:0px;
+        left:0px;
+    }
+
+    to {
+        transform: translate(-500px, -500px)
+    }
+}*/
+
+@import "bourbon";
+
+.background {
+  height: 150%;
+  width: 150%;
+  
+  /*min-width: 750px;
+  min-height: 1800px;*/
+}
+
+.background-image {
+  z-index: 0;
+
+}
+
+.center {
+  text-align: center;
+}
+
+#loginModal .modal {
+    height: 400px;
+    width: 600px;
+    z-index: 10;
+    display: inline-block;
+    overflow: hidden;
+    position: fixed;
+    top: 10%;
+    /*left: 50%;*/
+    background: #7B517F;
+    border-radius: 10px;
+    margin-top:5%;
+    color:#333333;
+    box-shadow: 7px 7px 3px #333333;
+    margin-left: -25%;
+}
+
+.background {
+    background-image: url('MagazineCollage.jpg');
+    background-size: 100% 100%;
+    /*height: 100%;
+    width: 100%;*/
+}
+
+.animate-bg {
+   animation: animate-move-bg 25s;
+   animation-fill-mode: forwards;
+   -webkit-animation-fill-mode: forwards;
+}
+
+@keyframes animate-move-bg {
+  0%   { transform: translateY(0px); }
+  100% { transform: translate(-25%, -28%); }
+}
+
+.pinDivButtons {
+    position: absolute;
+    bottom: 40px;
 }

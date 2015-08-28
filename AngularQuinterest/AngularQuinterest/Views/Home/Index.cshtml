@@ -12,11 +12,11 @@
             display: none !important;
         }
         input.ng-dirty.ng-invalid {
-            background-color: wheat;
+            background-color: #D3CBD4;
         }
         .error {
             font-weight: bold;
-            color: firebrick;
+            color: #512156;
         }
     </style>
 </head>
@@ -41,14 +41,17 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container-fluid body-content">
 
-        <ng-view></ng-view>
+        <ng-view>
 
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Quinterest</p>
-        </footer>
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Quinterest</p>
+            </footer>
+        </ng-view>
+
+        
     </div>
 
     <script src="~/Scripts/angular.min.js"></script>

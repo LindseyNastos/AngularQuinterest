@@ -1,32 +1,34 @@
-﻿<h1>{{user.userName}}</h1>
+﻿<div class="container">
+    <h1>{{user.userName}}</h1>
 
-<button ng-click="main.showCreateBoardModal()"><i class="fa fa-plus"></i> Create Board</button>
- 
-<button ng-click="main.showCreatePinModal()"><i class="fa fa-plus"></i> Create Pin</button>
-<br />
-<h4>Your Boards</h4>
-<hr />
+    <button ng-click="main.showCreateBoardModal()"><i class="fa fa-plus"></i> Create Board</button>
+
+    <button ng-click="main.showCreatePinModal()"><i class="fa fa-plus"></i> Create Pin</button>
+    <br />
+    <h4>Your Boards</h4>
+    <hr />
 
 
-<div class="section pins">
-    <div class="row">
-        <div class="col-sm-3" ng-repeat="board in main.boards">
-            <a class="noDecoHover" href="/boardDetails/{{board.id}}">
-                <div class="panel boards panel-default">
-                    <div class="panel-heading">
-                        {{board.boardName}}
+    <div class="section pins">
+        <div class="row">
+            <div class="col-sm-3" ng-repeat="board in main.boards">
+                <a class="noDecoHover" href="/boardDetails/{{board.id}}">
+                    <div class="panel boards panel-default">
+                        <div class="panel-heading">
+                            {{board.boardName}}
+                        </div>
+                        <div class="panel-body">
+                            <img class="img-responsive mainBoardImages" ng-src="{{board.imageUrl}}" />
+                            <br />
+                            <img class="tinyPinDiv img-responsive" ng-src="{{board.pins[0].imageUrl}}" />
+                            <img class="tinyPinDiv img-responsive" ng-src="{{board.pins[1].imageUrl}}" />
+                            <img class="tinyPinDiv img-responsive" ng-src="{{board.pins[2].imageUrl}}" />
+                            <hr />
+                            <p>{{board.description}}</p>
+                        </div>
                     </div>
-                    <div class="panel-body">
-                        <img class="img-responsive mainBoardImages" ng-src="{{board.imageUrl}}" />
-                        <br />
-                        <img class="tinyPinDiv img-responsive" ng-src="{{board.pins[0].imageUrl}}" />
-                        <img class="tinyPinDiv img-responsive" ng-src="{{board.pins[1].imageUrl}}" />
-                        <img class="tinyPinDiv img-responsive" ng-src="{{board.pins[2].imageUrl}}" />
-                        <hr />
-                        <p>{{board.description}}</p>
-                    </div>
-                </div>
-            </a>
+                </a>
+            </div>
         </div>
     </div>
 </div>
