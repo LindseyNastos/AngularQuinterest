@@ -16,12 +16,9 @@ namespace AngularQuinterest.Services
             _repo = repo;
         }
 
-        
-
         public IList<Pin> PinList()
         {
             return _repo.Query<Pin>().OrderBy(p => Guid.NewGuid()).ToList();
-            
         }
 
         public Pin FindPin(int pinId)
@@ -45,8 +42,6 @@ namespace AngularQuinterest.Services
         //        .FirstOrDefault();
         //}
 
-
-
         public int UpdatePinCount(int boardId)
         {
             var count = _repo.Query<Pin>()
@@ -58,7 +53,6 @@ namespace AngularQuinterest.Services
             return count;
         }
 
-
         public void Create(Pin pin, string userId)
         {
             pin.UserId = userId;
@@ -68,13 +62,12 @@ namespace AngularQuinterest.Services
             this.UpdatePinCount(boardId);
         }
 
-
         public Pin PinIt(Pin pin, string userId, int boardId)
         {
             var newPin = new Pin
             {
                 Title = pin.Title,
-                BoardId = pin.BoardId,
+                BoardId = boardId,
                 ImageUrl = pin.ImageUrl,
                 Website = pin.Website,
                 ShortDescription = pin.ShortDescription,
@@ -82,14 +75,12 @@ namespace AngularQuinterest.Services
                 UserId = userId
             };
 
-            _repo.Add<Pin>(pin);
+            _repo.Add<Pin>(newPin);
             _repo.SaveChanges();
             this.UpdatePinCount(boardId);
 
             return newPin;
-
         }
-
 
         public void Edit(int id, Pin pin)
         {
@@ -121,6 +112,5 @@ namespace AngularQuinterest.Services
 
             this.UpdatePinCount(board.Id);
         }
-
     }
 }

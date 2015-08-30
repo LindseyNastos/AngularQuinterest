@@ -1,1 +1,12 @@
-﻿<h1>Admin View</h1>
+﻿<div ng-controller="AdminController as main" ng-show="!main.isAdmin()">
+    <h1>You should not be here!</h1>
+</div>
+
+<div ng-controller="AdminController as main" ng-show="main.isAdmin()">
+
+    <h1>Admin View</h1>
+
+    <p>Admin stuff here.</p>
+
+</div>
+

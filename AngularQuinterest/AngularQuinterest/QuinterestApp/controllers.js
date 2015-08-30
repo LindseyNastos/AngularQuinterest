@@ -24,12 +24,10 @@
                     sessionStorage.setItem("access_token", result.access_token);
                     $http.defaults.headers.common['Authorization'] = 'bearer ' + sessionStorage.getItem("access_token");
                     $http.get('/api/admin/isAdmin').success(function (data) {
-                        sessionStorage.setItem('accessToken', result.access_token);
                         sessionStorage.setItem('isAdmin', data.userClaim);
+                        sessionStorage.setItem('displayName', data.displayName);
                         accountService.setUserInfo(data.displayName);
                         self.displayName = accountService.getUserInfo();
-                    }).error(function (data) {
-                        alert(data);
                     });
                     self.getPins();
                 }).error(function () {
@@ -59,6 +57,8 @@
 
         self.logOut = function () {
             sessionStorage.removeItem("access_token");
+            sessionStorage.removeItem("isAdmin");
+            sessionStorage.removeItem("displayName");
         };
 
         //Profile Button
@@ -245,10 +245,14 @@
 
     //BOARDS
 
-    app.controller('BoardIndexController', function ($modal, boardService) {
+    app.controller('BoardIndexController', function (accountService, $modal, boardService) {
         var self = this;
 
         self.boards = [];
+
+        //self.displayName = accountService.getUserInfo();
+
+        self.displayName = sessionStorage.getItem('displayName');
 
         //Board List
         self.getBoards = function () {
