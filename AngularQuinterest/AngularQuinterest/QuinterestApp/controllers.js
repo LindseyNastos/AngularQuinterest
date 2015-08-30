@@ -4,7 +4,7 @@
 
     //PINS
 
-    app.controller('PinIndexController', ['angularSpinner', '$http', '$resource', '$location', 'pinService', 'accountService', '$modal', function (angularSpinner, $http, $resource, $location, pinService, accountService, $modal) {
+    app.controller('PinIndexController', ['$http', '$resource', '$location', 'pinService', 'accountService', '$modal', function ($http, $resource, $location, pinService, accountService, $modal) {
 
         var self = this;
 
@@ -51,7 +51,7 @@
                         self.getPins();
                     });
             });
-            };
+        };
 
         self.isLoggedIn = function () {
             return sessionStorage.getItem("access_token");
@@ -301,6 +301,20 @@
 
         //Need to get pins on that board
         self.board = boardService.get($routeParams.id);
+
+        //Pin It
+        self.showPinItModal = function (id) {
+            $modal.open({
+                templateUrl: '/ngViews/modals/pinItModal.html',
+                controller: 'PinItModal',
+                controllerAs: 'modal',
+                resolve: {
+                    id: function () {
+                        return id;
+                    }
+                }
+            });
+        };
 
         //Create Pin
         self.showCreatePinModal = function () {

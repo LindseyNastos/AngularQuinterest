@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AngularQuinterest.Models.DataModels;
 
 namespace AngularQuinterest.API
 {
@@ -35,11 +36,12 @@ namespace AngularQuinterest.API
             return _userService.PinsOnBoard(id);
         }
 
-        public HttpResponseMessage Post(int pinId, int boardId)
+        // POST: api/User
+        public HttpResponseMessage Post(PinItDataModel data)
         {
             var userId = this.User.Identity.GetUserId();
-            var pin = _pinService.FindPin(pinId);
-            var newPin = _pinService.PinIt(pin, userId, boardId);
+            var pin = _pinService.FindPin(data.PinId);
+            var newPin = _pinService.PinIt(pin, userId, data.BoardId);
 
             return Request.CreateResponse(HttpStatusCode.Created, newPin);
         }

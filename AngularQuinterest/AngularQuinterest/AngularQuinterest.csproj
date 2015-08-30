@@ -240,6 +240,7 @@
     <Compile Include="Models\Board.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\DataModels\PinItDataModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Pin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

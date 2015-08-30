@@ -226,7 +226,7 @@ h1, .localLink, h4 {
 }
 
 .animate-bg {
-   animation: animate-move-bg 25s;
+   animation: animate-move-bg 30s;
    animation-fill-mode: forwards;
    -webkit-animation-fill-mode: forwards;
 }
