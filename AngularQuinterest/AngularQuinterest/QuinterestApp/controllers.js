@@ -60,7 +60,7 @@
             sessionStorage.removeItem("isAdmin");
             sessionStorage.removeItem("displayName");
         };
-
+         
         //Profile Button
         self.profile = function () {
             $location.path('/profile')
