@@ -23,24 +23,15 @@ namespace AngularQuinterest.Services
 
         public Pin FindPin(int pinId)
         {
-            return _repo.Query<Pin>().Include(p => p.Board).Where(p => p.Id == pinId).FirstOrDefault();
+            return _repo.Query<Pin>().Include(p => p.Board).Include(p => p.User).Where(p => p.Id == pinId).FirstOrDefault();
         }
 
-        //public Board FindBoard(int boardId)
-        //{
-        //    return _repo.Query<Board>()
-        //        .Where(b => b.Id == boardId)
-        //        .Include(b => b.Pins)
-        //        .FirstOrDefault();
-        //}
-
-        //public ApplicationUser FindUser(string userId)
-        //{
-        //    return _repo.Query<ApplicationUser>()
-        //        .Where(u => u.Id == userId)
-        //        .Include(u => u.Pins)
-        //        .FirstOrDefault();
-        //}
+        public ApplicationUser FindUser(string userId)
+        {
+            return _repo.Query<ApplicationUser>()
+                .Where(u => u.Id == userId)
+                .FirstOrDefault();
+        }
 
         public int UpdatePinCount(int boardId)
         {
@@ -56,6 +47,7 @@ namespace AngularQuinterest.Services
         public void Create(Pin pin, string userId)
         {
             pin.UserId = userId;
+            pin.User = this.FindUser(userId);
             _repo.Add<Pin>(pin);
             _repo.SaveChanges();
             var boardId = pin.BoardId;
@@ -72,7 +64,8 @@ namespace AngularQuinterest.Services
                 Website = pin.Website,
                 ShortDescription = pin.ShortDescription,
                 LongDescription = pin.LongDescription,
-                UserId = userId
+                UserId = userId,
+                User = this.FindUser(userId)
             };
 
             _repo.Add<Pin>(newPin);
@@ -92,6 +85,7 @@ namespace AngularQuinterest.Services
             original.ShortDescription = pin.ShortDescription;
             original.Title = pin.Title;
             original.UserId = pin.UserId;
+            original.User = pin.User;
             original.Website = pin.Website;
 
             _repo.SaveChanges();

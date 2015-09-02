@@ -26,16 +26,9 @@ namespace AngularQuinterest.API
  
         public HttpResponseMessage Get()
         {
-            //var claimsUser = this.User as ClaimsPrincipal;
-            //if (!claimsUser.HasClaim("IsAdmin", "true"))
-            //{
-            //    return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "Need Admin permissions!");
-            //}
-
             var pins = _service.PinList(); 
 
             return Request.CreateResponse(HttpStatusCode.OK, pins);
-            
         }
 
         // GET: api/Pins/5
@@ -43,9 +36,6 @@ namespace AngularQuinterest.API
         {
             return _service.FindPin(id);
         }
-
-        
-
 
         // POST: api/Pins
         public HttpResponseMessage Post(Pin pin)
@@ -68,8 +58,6 @@ namespace AngularQuinterest.API
             }
             return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
         }
-
-        
 
         // PUT: api/Pins/5
         public void Put(int id, [FromBody]string value)

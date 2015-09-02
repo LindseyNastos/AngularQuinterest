@@ -103,6 +103,8 @@
 
         self.pin = pinService.get($routeParams.id);
 
+        
+
         //Pin It
         self.showPinItModal = function (id) {
             $modal.open({
@@ -249,8 +251,6 @@
         var self = this;
 
         self.boards = [];
-
-        //self.displayName = accountService.getUserInfo();
 
         self.displayName = sessionStorage.getItem('displayName');
 

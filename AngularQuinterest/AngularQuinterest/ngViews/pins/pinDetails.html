@@ -21,7 +21,7 @@
                 <hr style="border-color:transparent" />
                 {{main.pin.longDescription}}
                 <hr style="border-color:transparent" />
-                <strong><text>Pinned by </text>UserName Goes Here</strong>
+                <strong><text>Pinned by </text>{{main.pin.user.displayName}}</strong>
                 <hr style="border-color:white" />
                 <button class="btn-danger" ng-click="main.showPinItModal(main.pin.id)"><i class="fa fa-thumb-tack"></i> Pin it</button>
                 <button ng-click="main.showEditModal(main.pin.id)"><i class="fa fa-pencil"></i> Edit</button>

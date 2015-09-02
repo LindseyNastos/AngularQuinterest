@@ -4,12 +4,7 @@
 
         $http.defaults.headers.common['Authorization'] = 'bearer ' + sessionStorage.getItem("access_token");
 
-
         var Pin = $resource('/api/pins/:id');
-
-        //var PinIt = $resource('/api/user/post?pinId=' + pinId + '&boardId=' + boardId);
-
-        //var PinIt = $resource('/api/user/post?pinId=pinId&boardId=boardId');
 
         var PinIt = $resource('/api/user');
 
