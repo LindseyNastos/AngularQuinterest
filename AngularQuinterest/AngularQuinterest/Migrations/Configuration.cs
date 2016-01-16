@@ -1,4 +1,4 @@
-namespace AngularQuinterest.Migrations
+   namespace AngularQuinterest.Migrations
 {
     using AngularQuinterest.Models;
     using Microsoft.AspNet.Identity;

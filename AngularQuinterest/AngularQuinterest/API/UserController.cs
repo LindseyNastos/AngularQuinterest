@@ -43,7 +43,6 @@ namespace AngularQuinterest.API
             var pin = _pinService.FindPin(data.PinId);
             var newPin = _pinService.PinIt(pin, userId, data.BoardId);
 
-
             return Request.CreateResponse(HttpStatusCode.Created, newPin);
         }
 

@@ -1,4 +1,4 @@
-﻿(function () {
+﻿ (function () {
 
     angular.module('QuinterestApp').factory('pinService', function ($resource, $http) {
 

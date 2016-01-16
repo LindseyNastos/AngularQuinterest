@@ -140,7 +140,7 @@
             $modal.open({
                 templateUrl: '/ngViews/modals/removePinModal.html',
                 controller: 'DeletePinModal',
-                controllerAs: 'modal',
+                controllerAs: 'modal',     
                 resolve: {
                     id: function () {
                         return id;
